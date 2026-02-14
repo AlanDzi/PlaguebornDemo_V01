@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     public int currentHealth;
     public int experienceReward = 25;
 
-    [Header("Movement i AI")]
+    [Header("Movement & AI")]
     public float moveSpeed = 3.5f;
     public float attackRange = 2f;
     public float detectionRange = 8f;
@@ -26,7 +26,11 @@ public class Enemy : MonoBehaviour
     [Header("Combat")]
     public int attackDamage = 10;
 
-    [Header("Ranger Settings")]
+    [Header("Infection / Poison")]
+    public int infectionMin = 0;
+    public int infectionMax = 0;
+
+    [Header("Ranger")]
     public GameObject projectilePrefab;
     public Transform shootPoint;
     public float projectileForce = 15f;
@@ -35,11 +39,13 @@ public class Enemy : MonoBehaviour
     [Header("Audio")]
     public AudioClip attackSound;
     public AudioClip deathSound;
-
     public AudioClip detectMeleeSound;
     public AudioClip detectRangerSound;
 
+
     private AudioSource audioSource;
+    private Animator animator;
+
     private Transform player;
     private PlayerStats playerStats;
     private NavMeshAgent navAgent;
@@ -49,11 +55,18 @@ public class Enemy : MonoBehaviour
     private bool playerDetected = false;
     private bool detectionSoundPlayed = false;
 
+    private bool isAttacking = false;
+    private bool damageDealt = false;
+
     private float lastAttackTime = 0f;
+
+
 
     void Start()
     {
         currentHealth = maxHealth;
+
+        animator = GetComponent<Animator>();
 
         PlayerController pc = FindFirstObjectByType<PlayerController>();
 
@@ -83,6 +96,8 @@ public class Enemy : MonoBehaviour
         audioSource.spatialBlend = 1f;
     }
 
+   
+
     void Update()
     {
         if (isDead || player == null || playerStats == null)
@@ -98,14 +113,12 @@ public class Enemy : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, player.position);
 
-        // Reset po zgubieniu gracza (opcjonalnie)
         if (distance > detectionRange * 2f)
         {
             playerDetected = false;
             detectionSoundPlayed = false;
         }
 
-        // Wykrycie gracza
         if (!playerDetected && distance <= detectionRange)
         {
             playerDetected = true;
@@ -121,19 +134,19 @@ public class Enemy : MonoBehaviour
             HandleRanger(distance);
     }
 
-    // ================= MELEE =================
+   
 
     void HandleMelee(float distance)
     {
+        if (isAttacking) return;
+
         if (distance <= attackRange)
         {
-            if (navAgent != null && navAgent.enabled)
-                navAgent.ResetPath();
-
+            StopMoving();
             FacePlayer();
 
             if (Time.time >= lastAttackTime + attackCooldown)
-                AttackPlayer();
+                StartAttack();
         }
         else if (distance <= detectionRange * 1.5f)
         {
@@ -141,17 +154,50 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void AttackPlayer()
+    void StartAttack()
     {
+        if (isAttacking) return;
+
+        isAttacking = true;
+        damageDealt = false;
         lastAttackTime = Time.time;
 
-        if (attackSound != null && audioSource != null)
+        StopMoving();
+
+        if (animator != null)
+        {
+            animator.SetBool("IsAttacking", true);
+
+            int rand = Random.Range(0, 2);
+
+            if (rand == 0)
+                animator.Play("Gnom_Attack", 0, 0f);
+            else
+                animator.Play("Gnom_slash", 0, 0f);
+        }
+    }
+
+   
+
+    public void DealDamage()
+    {
+        if (isDead || player == null) return;
+
+        if (damageDealt) return;
+
+        damageDealt = true;
+
+        if (attackSound != null)
             audioSource.PlayOneShot(attackSound);
 
         playerStats.TakeDamage(attackDamage);
 
-        int infection = Random.Range(10, 25);
-        playerStats.AddInfection(infection);
+        
+        if (infectionMax > 0)
+        {
+            int infection = Random.Range(infectionMin, infectionMax + 1);
+            playerStats.AddInfection(infection);
+        }
 
         Rigidbody rb = player.GetComponent<Rigidbody>();
 
@@ -164,19 +210,31 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // ================= RANGER =================
+
+    public void EndAttack()
+    {
+        isAttacking = false;
+        damageDealt = false;
+
+        if (animator != null)
+            animator.SetBool("IsAttacking", false);
+
+        ResumeMoving();
+    }
+
+   
 
     void HandleRanger(float distance)
     {
+        if (isAttacking) return;
+
         if (distance <= shootingRange)
         {
-            if (navAgent != null && navAgent.enabled)
-                navAgent.ResetPath();
-
+            StopMoving();
             FacePlayer();
 
             if (Time.time >= lastAttackTime + attackCooldown)
-                Shoot();
+                StartRangedAttack();
         }
         else if (distance <= detectionRange * 1.5f)
         {
@@ -184,15 +242,26 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Shoot()
+    void StartRangedAttack()
+    {
+        if (isAttacking) return;
+
+        isAttacking = true;
+        lastAttackTime = Time.time;
+
+        StopMoving();
+
+        if (animator != null)
+            animator.SetTrigger("Shoot");
+
+        Invoke(nameof(FireProjectile), 0.3f);
+        Invoke(nameof(EndAttack), 1f);
+    }
+
+    void FireProjectile()
     {
         if (projectilePrefab == null || shootPoint == null)
             return;
-
-        lastAttackTime = Time.time;
-
-        if (attackSound != null && audioSource != null)
-            audioSource.PlayOneShot(attackSound);
 
         GameObject proj = Instantiate(
             projectilePrefab,
@@ -211,12 +280,24 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // ================= COMMON =================
+   
 
     void MoveTowardsPlayer()
     {
         if (navAgent != null && navAgent.enabled)
             navAgent.SetDestination(player.position);
+    }
+
+    void StopMoving()
+    {
+        if (navAgent != null)
+            navAgent.isStopped = true;
+    }
+
+    void ResumeMoving()
+    {
+        if (navAgent != null)
+            navAgent.isStopped = false;
     }
 
     void FacePlayer()
@@ -233,12 +314,9 @@ public class Enemy : MonoBehaviour
         if (detectionSoundPlayed || audioSource == null)
             return;
 
-        AudioClip clip = null;
-
-        if (enemyType == EnemyType.Melee)
-            clip = detectMeleeSound;
-        else if (enemyType == EnemyType.Ranger)
-            clip = detectRangerSound;
+        AudioClip clip = enemyType == EnemyType.Melee
+            ? detectMeleeSound
+            : detectRangerSound;
 
         if (clip != null)
         {
@@ -247,10 +325,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    
+
     public void TakeDamage(int dmg)
     {
-        if (isDead)
-            return;
+        if (isDead) return;
 
         currentHealth -= dmg;
 
@@ -279,20 +358,26 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    
+
     void Die()
     {
         isDead = true;
 
+        StopMoving();
+
+        if (animator != null)
+            animator.SetTrigger("Die");
+
+        if (deathSound != null)
+            audioSource.PlayOneShot(deathSound);
+
         if (navAgent != null)
             navAgent.enabled = false;
 
-        if (deathSound != null && audioSource != null)
-            audioSource.PlayOneShot(deathSound);
-
         playerStats.AddExperience(experienceReward);
 
-        InventoryManager inv =
-            FindFirstObjectByType<InventoryManager>();
+        InventoryManager inv = FindFirstObjectByType<InventoryManager>();
 
         if (inv != null)
             inv.AddCoins(Random.Range(5, 16));
@@ -347,6 +432,8 @@ public class Enemy : MonoBehaviour
 
         Destroy(gameObject, 1f);
     }
+
+
 
     void OnDrawGizmosSelected()
     {

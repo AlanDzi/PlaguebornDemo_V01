@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1789580330354510715, guid: beb2fa4ff29090943b62545ec9f505ec, type: 3}
       propertyPath: m_Name
-      value: Gnom Variant
+      value: SyncGnom
       objectReference: {fileID: 0}
     - target: {fileID: 1789580330354510715, guid: beb2fa4ff29090943b62545ec9f505ec, type: 3}
       propertyPath: m_TagString
@@ -77,19 +77,11 @@ PrefabInstance:
       addedObject: {fileID: 4632851050103749548}
     - targetCorrespondingSourceObject: {fileID: 1789580330354510715, guid: beb2fa4ff29090943b62545ec9f505ec, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3180495691096167298}
-    - targetCorrespondingSourceObject: {fileID: 1789580330354510715, guid: beb2fa4ff29090943b62545ec9f505ec, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8947428421209363788}
     - targetCorrespondingSourceObject: {fileID: 1789580330354510715, guid: beb2fa4ff29090943b62545ec9f505ec, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7809401630226379237}
   m_SourcePrefab: {fileID: 100100000, guid: beb2fa4ff29090943b62545ec9f505ec, type: 3}
---- !u!95 &2621324177155568525 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5007476859106167739, guid: beb2fa4ff29090943b62545ec9f505ec, type: 3}
-  m_PrefabInstance: {fileID: 6998296812478216246}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8776156726686495565 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1789580330354510715, guid: beb2fa4ff29090943b62545ec9f505ec, type: 3}
@@ -112,32 +104,20 @@ MonoBehaviour:
   currentHealth: 0
   experienceReward: 25
   moveSpeed: 2
-  attackRange: 2
-  detectionRange: 5
+  attackRange: 1.5
+  detectionRange: 3
   attackCooldown: 2
-  attackDamage: 10
+  attackDamage: 15
+  infectionMin: 2
+  infectionMax: 5
   projectilePrefab: {fileID: 0}
   shootPoint: {fileID: 0}
   projectileForce: 15
   shootingRange: 12
-  attackSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 1acbcc1571569304d88696f6aceb5277, type: 3}
+  deathSound: {fileID: 8300000, guid: 6e534f80cd014b441a76266b1009109b, type: 3}
   detectMeleeSound: {fileID: 8300000, guid: 86dfcc901f6bad647ab051609c749c6d, type: 3}
   detectRangerSound: {fileID: 0}
---- !u!114 &3180495691096167298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8776156726686495565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 915e95ac6dcbc4747ba354996b11f105, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2621324177155568525}
-  timeBetweenAttacks: 3
 --- !u!195 &8947428421209363788
 NavMeshAgent:
   m_ObjectHideFlags: 0

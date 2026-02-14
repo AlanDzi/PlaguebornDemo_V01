@@ -22,6 +22,19 @@ public class UIManager : MonoBehaviour
     [Header("End Game")]
     public GameObject endGamePanel;
 
+    
+
+    [Header("UI Sounds")]
+    public AudioClip noteOpenSound;
+    public AudioClip noteCloseSound;
+
+    public AudioClip chestOpenSound;
+    public AudioClip chestCloseSound;
+
+    public AudioSource uiAudioSource;
+
+    
+
     private bool isNoteOpen;
     private bool isChestOpen;
     private bool isEndGameOpen;
@@ -40,6 +53,10 @@ public class UIManager : MonoBehaviour
         playerInteract = FindFirstObjectByType<PlayerInteract>();
 
         blockInteractUntil = 0f;
+
+      
+        if (uiAudioSource == null)
+            uiAudioSource = GetComponent<AudioSource>();
 
         if (noteGroup != null)
         {
@@ -80,10 +97,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // ================= NOTE =================
-
+   
     public void ShowNote(string text)
     {
+        
+        if (uiAudioSource != null && noteOpenSound != null)
+            uiAudioSource.PlayOneShot(noteOpenSound);
+
         isNoteOpen = true;
 
         noteText.text = text;
@@ -97,6 +117,10 @@ public class UIManager : MonoBehaviour
 
     public void CloseNote()
     {
+       
+        if (uiAudioSource != null && noteCloseSound != null)
+            uiAudioSource.PlayOneShot(noteCloseSound);
+
         isNoteOpen = false;
 
         noteGroup.alpha = 0;
@@ -108,10 +132,13 @@ public class UIManager : MonoBehaviour
         LockPlayer(false);
     }
 
-    // ================= CHEST =================
+   
 
     public void ShowChest(Chest chest)
     {
+        if (uiAudioSource != null && chestOpenSound != null)
+            uiAudioSource.PlayOneShot(chestOpenSound);
+
         isChestOpen = true;
 
         chestPanel.SetActive(true);
@@ -124,6 +151,10 @@ public class UIManager : MonoBehaviour
 
     public void CloseChest()
     {
+        
+        if (uiAudioSource != null && chestCloseSound != null)
+            uiAudioSource.PlayOneShot(chestCloseSound);
+
         isChestOpen = false;
 
         chestPanel.SetActive(false);
@@ -146,7 +177,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    // ================= END GAME =================
+    
 
     public void ShowEndGame()
     {
@@ -169,7 +200,7 @@ public class UIManager : MonoBehaviour
 #endif
     }
 
-    // ================= PROMPT =================
+    
 
     public void ShowInteractionPrompt(bool show, string text = "")
     {
@@ -181,7 +212,7 @@ public class UIManager : MonoBehaviour
             interactionPromptText.text = text;
     }
 
-    // ================= PLAYER =================
+    
 
     void LockPlayer(bool lockPlayer)
     {

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 36ed619ab30d30246947d609a8db85e8
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 329374
+  packageName: "Upgrade Tree \u2013 Skill, Tech & Perk Trees for Idle/Incremental/Roguelike
+    Games"
+  packageVersion: 1.0.3
+  assetPath: Assets/HolenderGames/UpgradesTree/Prefabs/UpgradeButton.prefab
+  uploadId: 812910

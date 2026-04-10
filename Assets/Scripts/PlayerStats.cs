@@ -1,3 +1,4 @@
+using HolenderGames.UpgradesTree;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +33,10 @@ public class PlayerStats : MonoBehaviour
     private bool isDead = false;
     private bool gameWon = false;
     private float lastInfectionDamage = 0f;
+    
+    [Header("Skill Points")]
+    public int expPerSkillPoint = 25;
+    private int expSinceLastPoint = 0;
 
     void Start()
     {
@@ -129,6 +134,17 @@ public class PlayerStats : MonoBehaviour
     public void AddExperience(int amount)
     {
         experience += amount;
+
+        expSinceLastPoint += amount;
+
+        while (expSinceLastPoint >= expPerSkillPoint)
+        {
+            expSinceLastPoint -= expPerSkillPoint;
+
+            if (CurrencyManager.Instance != null)
+                CurrencyManager.Instance.ChangeCurrency(1);
+        }
+
         CheckLevelUp();
     }
 

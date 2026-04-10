@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f896120182dd854896c2ab7adbc9c27, type: 3}
+  m_Name: HealthBoost
+  m_EditorClassIdentifier: 
+  UpgradeName: Health Boost
+  Descriptions:
+  - Increase HP by 50
+  - Increase HP by 50
+  - Increase HP by 200
+  Costs: 020000000200000005000000
+  Values:
+  - 20
+  - 30
+  - 50
+  Icon: {fileID: 21300000, guid: b510b9b5824035f4ea5a0198883d7ed2, type: 3}
+  UnlockWhenParentMaxed: 0
+  UnlockAtParentLevel: 1
+  ParentUpgrade: {fileID: 11400000, guid: 4050223244a53634087aa699a9e9420a, type: 2}
+  statType: 0

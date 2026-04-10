@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+   
+    [Header("Skill Tree")]
+    public GameObject skillTreePanel;
+    private bool isSkillTreeOpen;
 
     [Header("Note")]
     public CanvasGroup noteGroup;
@@ -44,7 +48,7 @@ public class UIManager : MonoBehaviour
 
     private PlayerInteract playerInteract;
 
-    public bool IsAnyUIOpen => isNoteOpen || isChestOpen || isEndGameOpen;
+    public bool IsAnyUIOpen => isNoteOpen || isChestOpen || isEndGameOpen || isSkillTreeOpen;
 
     private void Awake()
     {
@@ -74,6 +78,10 @@ public class UIManager : MonoBehaviour
         if (endGamePanel != null)
             endGamePanel.SetActive(false);
 
+        if (skillTreePanel != null)
+            skillTreePanel.SetActive(false);
+
+        isSkillTreeOpen = false;
         isNoteOpen = false;
         isChestOpen = false;
         isEndGameOpen = false;
@@ -81,6 +89,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        // OBS£UGA E (note / chest)
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (isNoteOpen)
@@ -95,9 +104,24 @@ public class UIManager : MonoBehaviour
                 return;
             }
         }
+
+        // OBS£UGA P (skill tree)  MUSI BYÆ POZA E
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (isSkillTreeOpen)
+            {
+                CloseSkillTree();
+            }
+            else if (!IsAnyUIOpen)
+            {
+                OpenSkillTree();
+            }
+        }
     }
 
-   
+
+
+
     public void ShowNote(string text)
     {
         
@@ -227,7 +251,40 @@ public class UIManager : MonoBehaviour
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
+
             Cursor.visible = false;
         }
     }
+    // ================= SKILL TREE =================
+
+    public void OpenSkillTree()
+    {
+        if (skillTreePanel == null) return;
+
+        isSkillTreeOpen = true;
+
+        skillTreePanel.SetActive(true);
+
+        LockPlayer(true);
+
+        Time.timeScale = 0f;
+    }
+
+    public void CloseSkillTree()
+    {
+        if (skillTreePanel == null) return;
+
+        isSkillTreeOpen = false;
+
+        skillTreePanel.SetActive(false);
+
+        blockInteractUntil = Time.time + 0.2f;
+
+        LockPlayer(false);
+
+        // tylko jeœli NIC innego nie jest otwarte
+        if (!IsAnyUIOpen)
+            Time.timeScale = 1f;
+    }
+
 }

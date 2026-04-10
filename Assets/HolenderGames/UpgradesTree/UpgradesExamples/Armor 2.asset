@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f896120182dd854896c2ab7adbc9c27, type: 3}
+  m_Name: Armor 2
+  m_EditorClassIdentifier: 
+  UpgradeName: Armor
+  Descriptions:
+  - Increase Armor +1
+  - Increase Armor +1
+  - Increase Armor +3
+  Costs: 020000000200000004000000
+  Values:
+  - 10
+  - 15
+  - 20
+  Icon: {fileID: 21300000, guid: f0c9e275deeefbb46a0ee2b7358b4e05, type: 3}
+  UnlockWhenParentMaxed: 0
+  UnlockAtParentLevel: 2
+  ParentUpgrade: {fileID: 11400000, guid: 4d13fdade9b4e954ba56e73378f9d41a, type: 2}
+  statType: 2

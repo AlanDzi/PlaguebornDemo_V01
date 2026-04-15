@@ -7,3 +7,11 @@ ShaderImporter:
   userData: Version 2.0
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 329374
+  packageName: "Upgrade Tree \u2013 Skill, Tech & Perk Trees for Idle/Incremental/Roguelike
+    Games"
+  packageVersion: 1.0.3
+  assetPath: Assets/TextMesh Pro/Shaders/TMPro.cginc
+  uploadId: 812910

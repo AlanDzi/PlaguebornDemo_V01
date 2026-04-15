@@ -27,6 +27,18 @@ public class PlayerStats : MonoBehaviour
     public int baseDamage = 20;
     public int currentDamage;
 
+    [Header("Advanced Combat")]
+
+    [Range(0f, 1f)]
+    public float critChance = 0.1f;
+
+    public float critMultiplier = 2f;
+
+    public float attackRange = 0f; 
+
+    [Range(0f, 1f)]
+    public float poisonResistance = 0f;
+
     [Header("Death Settings")]
     public float deathDelay = 2f;
 

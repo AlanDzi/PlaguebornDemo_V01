@@ -29,7 +29,12 @@ namespace HolenderGames.UpgradesTree
             MaxHealth,
             Damage,
             Stamina,
-            MoveSpeed
+            MoveSpeed,
+                
+            CritChance,
+            CritMultiplier,
+            AttackRange,
+            PoisonResistance
         }
 
 
@@ -79,7 +84,25 @@ namespace HolenderGames.UpgradesTree
                     if (pc != null)
                         pc.walkSpeed += value;
                     break;
+                case StatType.CritChance:
+                    stats.critChance += value;
+                    stats.critChance = Mathf.Clamp01(stats.critChance);
+                    break;
+
+                case StatType.CritMultiplier:
+                    stats.critMultiplier += value;
+                    break;
+
+                case StatType.AttackRange:
+                    stats.attackRange += value;
+                    break;
+
+                case StatType.PoisonResistance:
+                    stats.poisonResistance += value;
+                    stats.poisonResistance = Mathf.Clamp01(stats.poisonResistance);
+                    break;
             }
+
         }
 
         public override string ToString()

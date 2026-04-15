@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: e3265ab4bf004d28a9537516768c1c75
 timeCreated: 1484171297
-licenseType: Pro
+licenseType: Store
 TrueTypeFontImporter:
   serializedVersion: 2
   fontSize: 16
@@ -17,3 +17,11 @@ TrueTypeFontImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 329374
+  packageName: "Upgrade Tree \u2013 Skill, Tech & Perk Trees for Idle/Incremental/Roguelike
+    Games"
+  packageVersion: 1.0.3
+  assetPath: Assets/TextMesh Pro/Fonts/LiberationSans.ttf
+  uploadId: 812910

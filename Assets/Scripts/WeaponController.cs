@@ -3,8 +3,10 @@ using System.Collections;
 
 public class WeaponController : MonoBehaviour
 {
+    [Header("Weapon Data")]
+    public WeaponData weaponData;
+
     [Header("Weapon Settings")]
-    public float attackRange = 3f;
     public float attackCooldown = 0.8f;
     public float attackStaminaCost = 10f;
 
@@ -72,17 +74,21 @@ public class WeaponController : MonoBehaviour
 
     bool CanAttack()
     {
-        if (playerController == null) return false;
+        if (playerController == null || weaponData == null) return false;
 
         return
-            Time.time >= lastAttackTime + attackCooldown &&
+            Time.time >= lastAttackTime + (attackCooldown / weaponData.attackSpeed) &&
             playerController.stamina >= attackStaminaCost &&
             !isSwinging;
     }
 
     void Attack()
     {
-        if (playerController == null) return;
+        if (playerController == null || weaponData == null)
+        {
+            Debug.LogWarning("No weapon assigned!");
+            return;
+        }
 
         lastAttackTime = Time.time;
 
@@ -165,20 +171,35 @@ public class WeaponController : MonoBehaviour
 
     void DoRaycastDamage()
     {
+        if (weaponData == null) return;
+
         RaycastHit hit;
 
         Vector3 origin = playerCamera.transform.position;
         Vector3 dir = playerCamera.transform.forward;
 
-        Debug.DrawRay(origin, dir * attackRange, Color.red, 0.5f);
+        float totalRange = weaponData.attackRange + playerStats.attackRange;
 
-        if (Physics.Raycast(origin, dir, out hit, attackRange))
+        Debug.DrawRay(origin, dir * totalRange, Color.red, 0.5f);
+
+        if (Physics.Raycast(origin, dir, out hit, totalRange))
         {
             Enemy enemy = hit.collider.GetComponent<Enemy>();
 
             if (enemy != null)
             {
-                int dmg = playerStats.currentDamage;
+                int dmg = weaponData.baseDamage + playerStats.currentDamage;
+
+                // CRIT SYSTEM
+                float totalCritChance = weaponData.critChance + playerStats.critChance;
+                float totalCritMultiplier = weaponData.critMultiplier * playerStats.critMultiplier;
+
+                if (Random.value < totalCritChance)
+                {
+                    dmg = Mathf.RoundToInt(dmg * totalCritMultiplier);
+                    Debug.Log("CRIT!");
+                }
+
                 enemy.TakeDamage(dmg);
 
                 if (hitSound != null)

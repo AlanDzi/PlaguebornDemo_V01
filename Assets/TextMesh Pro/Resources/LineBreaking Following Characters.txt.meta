@@ -6,3 +6,11 @@ TextScriptImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 329374
+  packageName: "Upgrade Tree \u2013 Skill, Tech & Perk Trees for Idle/Incremental/Roguelike
+    Games"
+  packageVersion: 1.0.3
+  assetPath: Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt
+  uploadId: 812910

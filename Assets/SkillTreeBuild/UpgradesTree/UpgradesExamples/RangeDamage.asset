@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f896120182dd854896c2ab7adbc9c27, type: 3}
   m_Name: RangeDamage
   m_EditorClassIdentifier: 
-  UpgradeName: Range Damage Boost
+  UpgradeName: "Sir D\u0142ugor\u0119ki"
   Descriptions:
-  - Increase Range by 5
-  - Increase Range by 10
-  - Increase Range by 20
-  Costs: 3200000064000000c8000000
+  - "Zwi\u0119ksz zasi\u0119g ataku o 0.5 "
+  - "Zwi\u0119ksz zasi\u0119g ataku o 0.5 "
+  - "Zwi\u0119ksz zasi\u0119g ataku o 1"
+  Costs: 010000000100000003000000
   Values:
-  - 5
-  - 10
-  - 20
-  Icon: {fileID: 21300000, guid: f668b57a57ea336488e5b6de65850e90, type: 3}
+  - 0.5
+  - 0.5
+  - 1
+  Icon: {fileID: 21300000, guid: 6ca75c98a9886f34b84e0f3983ea6462, type: 3}
   UnlockWhenParentMaxed: 1
   UnlockAtParentLevel: 1
   ParentUpgrade: {fileID: 11400000, guid: 4050223244a53634087aa699a9e9420a, type: 2}
+  statType: 6

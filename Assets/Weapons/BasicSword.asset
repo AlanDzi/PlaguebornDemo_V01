@@ -15,6 +15,16 @@ MonoBehaviour:
   weaponName: BasicSword
   baseDamage: 20
   attackSpeed: 1
-  attackRange: 3
+  attackRange: 1
+  attackCooldown: 0.8
+  staminaCost: 10
   critChance: 0.1
   critMultiplier: 2
+  weaponPrefab: {fileID: 919132149155446097, guid: 973cd0fc5265bbb4285608fbaf1f60ae, type: 3}
+  swingRotation: {x: -40, y: 90, z: 0}
+  swingPositionOffset: {x: -0.15, y: -0.1, z: 0.25}
+  swingSpeed: 14
+  returnSpeed: 16
+  hitSound: {fileID: 8300000, guid: 41ae607924de7b04cafae155d16cd474, type: 3}
+  missSound: {fileID: 0}
+  swingSound: {fileID: 8300000, guid: 81ca5e5391bb70e4ca2e1f928f3f010f, type: 3}

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f896120182dd854896c2ab7adbc9c27, type: 3}
   m_Name: SharpEdge
   m_EditorClassIdentifier: 
-  UpgradeName: Very Sharp Edge
+  UpgradeName: Wola Walki
   Descriptions:
-  - Increase Attack Damage by 10%
-  - Increase Attack Damage by 20%
+  - "Zwi\u0119ksz obra\u017Cenia o 5"
+  - "Zwi\u0119ksz obra\u017Cenia o 10"
   Costs: 0100000002000000
   Values:
+  - 5
   - 10
-  - 20
   Icon: {fileID: 21300000, guid: 6bb633ca31519c649b8d9144620dc9b7, type: 3}
   UnlockWhenParentMaxed: 1
   UnlockAtParentLevel: 1

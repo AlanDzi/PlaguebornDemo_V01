@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f896120182dd854896c2ab7adbc9c27, type: 3}
   m_Name: HealthBoost
   m_EditorClassIdentifier: 
-  UpgradeName: Health Boost
+  UpgradeName: "Wi\u0119cej \u017Cycia"
   Descriptions:
-  - Increase HP by 50
-  - Increase HP by 50
-  - Increase HP by 200
-  Costs: 020000000200000005000000
+  - "Zwi\u0119ksz \u017Cycie o 20"
+  - "Zwi\u0119ksz \u017Cycie o 30"
+  - "Zwi\u0119ksz \u017Cycie o 50"
+  Costs: 010000000100000003000000
   Values:
   - 20
   - 30

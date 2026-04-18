@@ -16,6 +16,21 @@ public class CrosshairTarget : MonoBehaviour
 
     void Update()
     {
+        
+        if (UIManager.Instance != null && UIManager.Instance.IsAnyUIOpen)
+        {
+            if (crosshair.enabled)
+                crosshair.enabled = false;
+
+            return;
+        }
+        else
+        {
+            if (!crosshair.enabled)
+                crosshair.enabled = true;
+        }
+
+
         Ray ray = new Ray(
             playerCamera.transform.position,
             playerCamera.transform.forward
@@ -23,14 +38,12 @@ public class CrosshairTarget : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, distance))
         {
-            
             if (hit.collider.CompareTag("Enemy"))
             {
                 crosshair.color = enemyColor;
                 return;
             }
 
-            
             if ((interactLayer.value & (1 << hit.collider.gameObject.layer)) != 0)
             {
                 crosshair.color = interactColor;
@@ -38,7 +51,6 @@ public class CrosshairTarget : MonoBehaviour
             }
         }
 
-        
         crosshair.color = normalColor;
     }
 }

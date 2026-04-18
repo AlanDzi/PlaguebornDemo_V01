@@ -6,24 +6,10 @@ public class WeaponController : MonoBehaviour
     [Header("Weapon Data")]
     public WeaponData weaponData;
 
-    [Header("Weapon Settings")]
-    public float attackCooldown = 0.8f;
-    public float attackStaminaCost = 10f;
+    [Header("Weapon Holder")]
+    public Transform weaponHolder;
 
-    [Header("Sword Transform")]
-    public Transform swordTransform;
-
-    [Header("Swing Animation")]
-    public Vector3 swingRotation = new Vector3(-70f, 20f, 0f);
-    public Vector3 swingPositionOffset = new Vector3(-0.15f, -0.1f, 0.25f);
-
-    public float swingSpeed = 14f;
-    public float returnSpeed = 16f;
-
-    [Header("Audio")]
-    public AudioClip hitSound;
-    public AudioClip missSound;
-    public AudioClip swingSound;
+    private Transform currentWeapon;
 
     PlayerStats playerStats;
     PlayerController playerController;
@@ -52,10 +38,9 @@ public class WeaponController : MonoBehaviour
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
 
-        if (swordTransform != null)
+        if (weaponData != null && weaponData.weaponPrefab != null)
         {
-            startRot = swordTransform.localRotation;
-            startPos = swordTransform.localPosition;
+            SpawnWeapon();
         }
     }
 
@@ -70,6 +55,26 @@ public class WeaponController : MonoBehaviour
         }
     }
 
+    // ================= SPAWN WEAPON =================
+
+    void SpawnWeapon()
+    {
+        if (currentWeapon != null)
+            Destroy(currentWeapon.gameObject);
+
+        GameObject obj = Instantiate(weaponData.weaponPrefab, weaponHolder);
+        currentWeapon = obj.transform;
+
+        startRot = currentWeapon.localRotation;
+        startPos = currentWeapon.localPosition;
+    }
+
+    public void EquipWeapon(WeaponData newWeapon)
+    {
+        weaponData = newWeapon;
+        SpawnWeapon();
+    }
+
     // ================= ATTACK =================
 
     bool CanAttack()
@@ -77,25 +82,22 @@ public class WeaponController : MonoBehaviour
         if (playerController == null || weaponData == null) return false;
 
         return
-            Time.time >= lastAttackTime + (attackCooldown / weaponData.attackSpeed) &&
-            playerController.stamina >= attackStaminaCost &&
+            Time.time >= lastAttackTime + (weaponData.attackCooldown / weaponData.attackSpeed) &&
+            playerController.stamina >= weaponData.staminaCost &&
             !isSwinging;
     }
 
     void Attack()
     {
         if (playerController == null || weaponData == null)
-        {
-            Debug.LogWarning("No weapon assigned!");
             return;
-        }
 
         lastAttackTime = Time.time;
 
-        playerController.stamina -= attackStaminaCost;
+        playerController.stamina -= weaponData.staminaCost;
 
-        if (swingSound != null)
-            audioSource.PlayOneShot(swingSound);
+        if (weaponData.swingSound != null)
+            audioSource.PlayOneShot(weaponData.swingSound);
 
         StartCoroutine(SwingAnimation());
 
@@ -106,33 +108,33 @@ public class WeaponController : MonoBehaviour
 
     IEnumerator SwingAnimation()
     {
-        if (swordTransform == null)
+        if (currentWeapon == null || weaponData == null)
             yield break;
 
         isSwinging = true;
 
         Quaternion targetRot =
-            startRot * Quaternion.Euler(swingRotation);
+            startRot * Quaternion.Euler(weaponData.swingRotation);
 
         Vector3 targetPos =
-            startPos + swingPositionOffset;
+            startPos + weaponData.swingPositionOffset;
 
-        // ===== ATAK =====
+        // ATAK
         while (
-            Quaternion.Angle(swordTransform.localRotation, targetRot) > 1f ||
-            Vector3.Distance(swordTransform.localPosition, targetPos) > 0.01f
+            Quaternion.Angle(currentWeapon.localRotation, targetRot) > 1f ||
+            Vector3.Distance(currentWeapon.localPosition, targetPos) > 0.01f
         )
         {
-            swordTransform.localRotation = Quaternion.Slerp(
-                swordTransform.localRotation,
+            currentWeapon.localRotation = Quaternion.Slerp(
+                currentWeapon.localRotation,
                 targetRot,
-                Time.deltaTime * swingSpeed
+                Time.deltaTime * weaponData.swingSpeed
             );
 
-            swordTransform.localPosition = Vector3.Lerp(
-                swordTransform.localPosition,
+            currentWeapon.localPosition = Vector3.Lerp(
+                currentWeapon.localPosition,
                 targetPos,
-                Time.deltaTime * swingSpeed
+                Time.deltaTime * weaponData.swingSpeed
             );
 
             yield return null;
@@ -140,29 +142,29 @@ public class WeaponController : MonoBehaviour
 
         yield return new WaitForSeconds(0.05f);
 
-        // ===== POWRÓT =====
+        // POWRÓT
         while (
-            Quaternion.Angle(swordTransform.localRotation, startRot) > 1f ||
-            Vector3.Distance(swordTransform.localPosition, startPos) > 0.01f
+            Quaternion.Angle(currentWeapon.localRotation, startRot) > 1f ||
+            Vector3.Distance(currentWeapon.localPosition, startPos) > 0.01f
         )
         {
-            swordTransform.localRotation = Quaternion.Slerp(
-                swordTransform.localRotation,
+            currentWeapon.localRotation = Quaternion.Slerp(
+                currentWeapon.localRotation,
                 startRot,
-                Time.deltaTime * returnSpeed
+                Time.deltaTime * weaponData.returnSpeed
             );
 
-            swordTransform.localPosition = Vector3.Lerp(
-                swordTransform.localPosition,
+            currentWeapon.localPosition = Vector3.Lerp(
+                currentWeapon.localPosition,
                 startPos,
-                Time.deltaTime * returnSpeed
+                Time.deltaTime * weaponData.returnSpeed
             );
 
             yield return null;
         }
 
-        swordTransform.localRotation = startRot;
-        swordTransform.localPosition = startPos;
+        currentWeapon.localRotation = startRot;
+        currentWeapon.localPosition = startPos;
 
         isSwinging = false;
     }
@@ -190,7 +192,6 @@ public class WeaponController : MonoBehaviour
             {
                 int dmg = weaponData.baseDamage + playerStats.currentDamage;
 
-                // CRIT SYSTEM
                 float totalCritChance = weaponData.critChance + playerStats.critChance;
                 float totalCritMultiplier = weaponData.critMultiplier * playerStats.critMultiplier;
 
@@ -202,13 +203,13 @@ public class WeaponController : MonoBehaviour
 
                 enemy.TakeDamage(dmg);
 
-                if (hitSound != null)
-                    audioSource.PlayOneShot(hitSound);
+                if (weaponData.hitSound != null)
+                    audioSource.PlayOneShot(weaponData.hitSound);
             }
             else
             {
-                if (missSound != null)
-                    audioSource.PlayOneShot(missSound);
+                if (weaponData.missSound != null)
+                    audioSource.PlayOneShot(weaponData.missSound);
             }
         }
     }

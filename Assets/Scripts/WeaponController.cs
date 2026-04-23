@@ -3,13 +3,28 @@ using System.Collections;
 
 public class WeaponController : MonoBehaviour
 {
-    [Header("Weapon Data")]
+    [Header("Weapons")]
+    public WeaponData[] weapons;
+    int currentWeaponIndex = 0;
+
+
+[Header("Current Weapon")]
     public WeaponData weaponData;
 
     [Header("Weapon Holder")]
     public Transform weaponHolder;
-
     private Transform currentWeapon;
+
+    [Header("Sway")]
+    public float swayAmount = 5f;
+    public float swaySmooth = 6f;
+
+    [Header("Clipping")]
+    public float clipStartDistance = 0.5f;
+    public float minDistance = 0.2f;
+    public float maxDistance = 0.6f;
+    public float clipSmooth = 10f;
+    public LayerMask clipMask;
 
     PlayerStats playerStats;
     PlayerController playerController;
@@ -23,25 +38,29 @@ public class WeaponController : MonoBehaviour
 
     bool isSwinging = false;
 
+    Vector3 swayOffset;
+    float currentDistance;
+
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
         playerController = GetComponent<PlayerController>();
 
         playerCamera = Camera.main;
-
         if (playerCamera == null)
             playerCamera = FindFirstObjectByType<Camera>();
 
         audioSource = GetComponent<AudioSource>();
-
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
 
-        if (weaponData != null && weaponData.weaponPrefab != null)
+        if (weapons != null && weapons.Length > 0)
         {
-            SpawnWeapon();
+            currentWeaponIndex = 0;
+            EquipWeapon(weapons[currentWeaponIndex]);
         }
+
+        currentDistance = maxDistance;
     }
 
     void Update()
@@ -49,13 +68,55 @@ public class WeaponController : MonoBehaviour
         if (UIManager.Instance != null && UIManager.Instance.IsAnyUIOpen)
             return;
 
+        HandleWeaponSwitch();
+
         if (Input.GetMouseButtonDown(0) && CanAttack())
         {
             Attack();
         }
+
+        HandleSway();
+        HandleClipping();
+        ApplyIdleTransform();
     }
 
-    // ================= SPAWN WEAPON =================
+    // ================= WEAPON SWITCH =================
+
+    void HandleWeaponSwitch()
+    {
+        if (weapons == null || weapons.Length <= 1) return;
+
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+
+        if (scroll > 0f)
+        {
+            currentWeaponIndex++;
+            if (currentWeaponIndex >= weapons.Length)
+                currentWeaponIndex = 0;
+
+            EquipWeapon(weapons[currentWeaponIndex]);
+        }
+        else if (scroll < 0f)
+        {
+            currentWeaponIndex--;
+            if (currentWeaponIndex < 0)
+                currentWeaponIndex = weapons.Length - 1;
+
+            EquipWeapon(weapons[currentWeaponIndex]);
+        }
+    }
+
+    public void EquipWeapon(WeaponData newWeapon)
+    {
+        if (newWeapon == null) return;
+
+        weaponData = newWeapon;
+        SpawnWeapon();
+
+        Debug.Log("Weapon: " + weaponData.weaponName);
+    }
+
+    // ================= SPAWN =================
 
     void SpawnWeapon()
     {
@@ -67,12 +128,6 @@ public class WeaponController : MonoBehaviour
 
         startRot = currentWeapon.localRotation;
         startPos = currentWeapon.localPosition;
-    }
-
-    public void EquipWeapon(WeaponData newWeapon)
-    {
-        weaponData = newWeapon;
-        SpawnWeapon();
     }
 
     // ================= ATTACK =================
@@ -89,8 +144,7 @@ public class WeaponController : MonoBehaviour
 
     void Attack()
     {
-        if (playerController == null || weaponData == null)
-            return;
+        if (weaponData == null) return;
 
         lastAttackTime = Time.time;
 
@@ -100,8 +154,72 @@ public class WeaponController : MonoBehaviour
             audioSource.PlayOneShot(weaponData.swingSound);
 
         StartCoroutine(SwingAnimation());
-
         DoRaycastDamage();
+    }
+
+    // ================= SWAY =================
+
+    void HandleSway()
+    {
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+
+        float moveX = -mouseX * swayAmount;
+        float moveY = -mouseY * swayAmount;
+
+        swayOffset = Vector3.Lerp(
+            swayOffset,
+            new Vector3(moveX, moveY, 0f),
+            Time.deltaTime * swaySmooth
+        );
+    }
+
+    // ================= CLIPPING =================
+
+    void HandleClipping()
+    {
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, clipMask))
+        {
+            if (hit.distance < clipStartDistance)
+            {
+                float t = Mathf.InverseLerp(clipStartDistance, minDistance, hit.distance);
+                float targetDist = Mathf.Lerp(maxDistance, minDistance, t);
+
+                currentDistance = Mathf.Lerp(currentDistance, targetDist, Time.deltaTime * clipSmooth);
+            }
+            else
+            {
+                currentDistance = Mathf.Lerp(currentDistance, maxDistance, Time.deltaTime * clipSmooth);
+            }
+        }
+        else
+        {
+            currentDistance = Mathf.Lerp(currentDistance, maxDistance, Time.deltaTime * clipSmooth);
+        }
+    }
+
+    // ================= IDLE =================
+
+    void ApplyIdleTransform()
+    {
+        if (currentWeapon == null || isSwinging) return;
+
+        Vector3 finalPos = startPos;
+
+        // sway
+        finalPos += swayOffset * 0.01f;
+
+        // clipping offset
+        float clipOffset = currentDistance - maxDistance;
+        finalPos += Vector3.forward * clipOffset;
+
+        currentWeapon.localPosition = Vector3.Lerp(
+            currentWeapon.localPosition,
+            finalPos,
+            Time.deltaTime * 10f
+        );
     }
 
     // ================= ANIMATION =================
@@ -119,7 +237,6 @@ public class WeaponController : MonoBehaviour
         Vector3 targetPos =
             startPos + weaponData.swingPositionOffset;
 
-        // ATAK
         while (
             Quaternion.Angle(currentWeapon.localRotation, targetRot) > 1f ||
             Vector3.Distance(currentWeapon.localPosition, targetPos) > 0.01f
@@ -142,7 +259,6 @@ public class WeaponController : MonoBehaviour
 
         yield return new WaitForSeconds(0.05f);
 
-        // POWRÓT
         while (
             Quaternion.Angle(currentWeapon.localRotation, startRot) > 1f ||
             Vector3.Distance(currentWeapon.localPosition, startPos) > 0.01f
@@ -213,4 +329,6 @@ public class WeaponController : MonoBehaviour
             }
         }
     }
+
+
 }

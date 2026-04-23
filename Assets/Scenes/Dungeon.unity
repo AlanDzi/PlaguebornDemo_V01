@@ -25730,8 +25730,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1811024, y: 0.17035595, z: 0.9842519}
-  m_Center: {x: 0, y: 0.00903691, z: 0}
+  m_Size: {x: 1.1811023, y: 0.24154878, z: 0.98425186}
+  m_Center: {x: -0, y: -0.0265597, z: 0}
 --- !u!4 &500516781 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c88aede91728b974788a3dfc37e95a85, type: 3}
@@ -40321,8 +40321,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1811024, y: 0.17035595, z: 0.9842519}
-  m_Center: {x: 0, y: 0.00903691, z: 0}
+  m_Size: {x: 1.1811023, y: 0.22338413, z: 0.98425186}
+  m_Center: {x: 0, y: -0.017477348, z: 0}
 --- !u!1 &760498920
 GameObject:
   m_ObjectHideFlags: 0
@@ -50452,7 +50452,7 @@ Transform:
   m_GameObject: {fileID: 928499456}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5422216, y: 0.45386758, z: -0.45386758, w: 0.5422216}
-  m_LocalPosition: {x: 0.46500003, y: -0.2069999, z: 0.9140001}
+  m_LocalPosition: {x: 0.506, y: -0.476, z: 0.717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -74787,8 +74787,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1811024, y: 0.17035595, z: 0.9842519}
-  m_Center: {x: 0, y: 0.00903691, z: 0}
+  m_Size: {x: 1.1811023, y: 0.21174772, z: 0.98425186}
+  m_Center: {x: 0, y: 0.02973285, z: 0}
 --- !u!4 &1459776145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c88aede91728b974788a3dfc37e95a85, type: 3}
@@ -76764,8 +76764,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1811024, y: 0.17035595, z: 0.9842519}
-  m_Center: {x: 0, y: 0.00903691, z: 0}
+  m_Size: {x: 1.1811023, y: 0.22572361, z: 0.98425186}
+  m_Center: {x: 0, y: 0.03672084, z: 0}
 --- !u!4 &1501831189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c88aede91728b974788a3dfc37e95a85, type: 3}
@@ -96396,6 +96396,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3360931853134610875, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
+      propertyPath: critChance
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 4780587411634089694, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
       propertyPath: interactDistance
       value: 2
@@ -96434,16 +96438,36 @@ PrefabInstance:
       objectReference: {fileID: 914695510}
     - target: {fileID: 6137113333574394451, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
       propertyPath: mouseSensitivity
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6137113333574394451, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
       propertyPath: groundCheckDistance
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
+      propertyPath: clipSmooth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
+      propertyPath: swayAmount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
+      propertyPath: swaySmooth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
       propertyPath: weaponData
       value: 
       objectReference: {fileID: 11400000, guid: f2ddd11ee7ecc354aac79ba8583d1341, type: 2}
+    - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
+      propertyPath: maxDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
+      propertyPath: minDistance
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
       propertyPath: weaponHolder
       value: 
@@ -96451,6 +96475,10 @@ PrefabInstance:
     - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
       propertyPath: swordTransform
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
+      propertyPath: clipMask.m_Bits
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
       propertyPath: swingRotation.x
@@ -96465,6 +96493,14 @@ PrefabInstance:
       value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
+      propertyPath: clipStartDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
+      propertyPath: weapons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
       propertyPath: swingPositionOffset.x
       value: -0.1
       objectReference: {fileID: 0}
@@ -96476,6 +96512,18 @@ PrefabInstance:
       propertyPath: swingPositionOffset.z
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
+      propertyPath: 'weapons.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: f2ddd11ee7ecc354aac79ba8583d1341, type: 2}
+    - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
+      propertyPath: 'weapons.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 03782553ca1828d4fbd154057fe4ef40, type: 2}
+    - target: {fileID: 8530228958884762965, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
+      propertyPath: 'weapons.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1546a3d5cf48670418269ae361d941d0, type: 2}
     m_RemovedComponents:
     - {fileID: 4780587411634089694, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
     m_RemovedGameObjects: []
@@ -111075,6 +111123,7 @@ SceneRoots:
   - {fileID: 147996382}
   - {fileID: 2454900}
   - {fileID: 931292010}
+  - {fileID: 559451867}
   - {fileID: 2000354895}
   - {fileID: 1423580939}
   - {fileID: 211251438}
@@ -111085,5 +111134,4 @@ SceneRoots:
   - {fileID: 366522154}
   - {fileID: 1552442554}
   - {fileID: 8389395578229183085}
-  - {fileID: 559451867}
   - {fileID: 710746705}

@@ -15,8 +15,8 @@ MonoBehaviour:
   weaponName: Axe
   baseDamage: 30
   attackSpeed: 0.8
-  attackRange: 1.2
-  attackCooldown: 0.6
+  attackRange: 1
+  attackCooldown: 0.9
   staminaCost: 20
   critChance: 0.05
   critMultiplier: 2.2
@@ -25,6 +25,6 @@ MonoBehaviour:
   swingPositionOffset: {x: -0.15, y: -0.1, z: 0.25}
   swingSpeed: 14
   returnSpeed: 16
-  hitSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: a36d75eec51be6648b0169320b3028ff, type: 3}
   missSound: {fileID: 0}
-  swingSound: {fileID: 0}
+  swingSound: {fileID: 8300000, guid: a8a9e6520470094409bad9dbe7e8720f, type: 3}

@@ -15,8 +15,8 @@ MonoBehaviour:
   weaponName: Hammer
   baseDamage: 40
   attackSpeed: 0.5
-  attackRange: 2
-  attackCooldown: 1.5
+  attackRange: 1.5
+  attackCooldown: 1.1
   staminaCost: 25
   critChance: 0.1
   critMultiplier: 2

@@ -16,8 +16,9 @@ public class CrosshairTarget : MonoBehaviour
 
     void Update()
     {
-        
-        if (UIManager.Instance != null && UIManager.Instance.IsAnyUIOpen)
+
+        if ((UIManager.Instance != null && UIManager.Instance.IsAnyUIOpen)
+    || PauseManager.IsPausedStatic)
         {
             if (crosshair.enabled)
                 crosshair.enabled = false;
@@ -29,7 +30,6 @@ public class CrosshairTarget : MonoBehaviour
             if (!crosshair.enabled)
                 crosshair.enabled = true;
         }
-
 
         Ray ray = new Ray(
             playerCamera.transform.position,

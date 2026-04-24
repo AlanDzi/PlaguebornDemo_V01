@@ -25,6 +25,11 @@ public class PauseManager : MonoBehaviour
     private AudioSource audioSource;
     private PlayerController playerController;
     private WeaponController weaponController;
+   
+    
+    
+    public static bool IsPausedStatic;
+    
 
     void Start()
     {
@@ -168,6 +173,9 @@ public class PauseManager : MonoBehaviour
         {
             weaponController.enabled = false;
         }
+
+        IsPausedStatic = true;
+
     }
 
     public void ResumeGame()
@@ -190,6 +198,11 @@ public class PauseManager : MonoBehaviour
         {
             weaponController.enabled = true;
         }
+
+
+        IsPausedStatic = false;
+
+
     }
 
     public void ShowMainMenuConfirm()

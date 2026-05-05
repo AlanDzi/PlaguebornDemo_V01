@@ -8,33 +8,21 @@ public class MainMenuManager : MonoBehaviour
 {
     [Header("Menu Panels")]
     public GameObject mainMenuPanel;
-    public GameObject classSelectionPanel;
     public GameObject settingsPanel;
+    public GameObject confirmPanel;
 
     [Header("Main Menu Buttons")]
     public Button playButton;
     public Button settingsButton;
     public Button quitButton;
 
-    [Header("Class Selection")]
-    public Button knightButton;
-    public Button confirmButton;
-    public Button backToSelectionButton;
-    public Button backToMainMenuButton;
-    public TextMeshProUGUI selectedClassText;
-
-    [Header("Settings Panel")]
+    [Header("Settings")]
     public Button backFromSettingsButton;
 
-    [Header("Confirm Panel")]
-    public GameObject confirmPanel;
+    [Header("Quit Confirm")]
     public TextMeshProUGUI confirmText;
     public Button yesButton;
     public Button noButton;
-
-    [Header("Background Video")]
-    public RawImage videoBackground;
-    public UnityEngine.Video.VideoPlayer videoPlayer;
 
     [Header("Audio")]
     public AudioClip buttonHoverSound;
@@ -42,51 +30,26 @@ public class MainMenuManager : MonoBehaviour
     public AudioClip ambientMusic;
 
     private AudioSource audioSource;
-    private string selectedClass = "";
 
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
-        {
             audioSource = gameObject.AddComponent<AudioSource>();
-        }
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         ShowMainMenu();
         SetupButtons();
-        SetupVideoBackground();
         SetupAmbientMusic();
-    }
-
-    void SetupVideoBackground()
-    {
-        if (videoPlayer != null && videoBackground != null)
-        {
-            videoPlayer.isLooping = true;
-            videoPlayer.playOnAwake = true;
-            videoPlayer.renderMode = UnityEngine.Video.VideoRenderMode.RenderTexture;
-            
-            RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 0);
-            videoPlayer.targetTexture = rt;
-            videoBackground.texture = rt;
-            
-            videoPlayer.Play();
-        }
     }
 
     void SetupButtons()
     {
-        playButton.onClick.AddListener(ShowClassSelection);
+        playButton.onClick.AddListener(StartGame);
         settingsButton.onClick.AddListener(ShowSettings);
         quitButton.onClick.AddListener(ShowQuitConfirmation);
-
-        knightButton.onClick.AddListener(() => SelectClass("Rycerz"));
-        confirmButton.onClick.AddListener(ConfirmClassSelection);
-        backToSelectionButton.onClick.AddListener(ResetClassSelection);
-        backToMainMenuButton.onClick.AddListener(ShowMainMenu);
 
         backFromSettingsButton.onClick.AddListener(ShowMainMenu);
 
@@ -96,139 +59,89 @@ public class MainMenuManager : MonoBehaviour
         AddButtonEffects(playButton);
         AddButtonEffects(settingsButton);
         AddButtonEffects(quitButton);
-        AddButtonEffects(knightButton);
-        AddButtonEffects(confirmButton);
         AddButtonEffects(backFromSettingsButton);
         AddButtonEffects(yesButton);
         AddButtonEffects(noButton);
-        AddButtonEffects(backToSelectionButton);
-        AddButtonEffects(backToMainMenuButton);
     }
 
     void AddButtonEffects(Button button)
     {
         EventTrigger trigger = button.gameObject.GetComponent<EventTrigger>();
         if (trigger == null)
-        {
             trigger = button.gameObject.AddComponent<EventTrigger>();
-        }
 
-        EventTrigger.Entry pointerEnter = new EventTrigger.Entry();
-        pointerEnter.eventID = EventTriggerType.PointerEnter;
-        pointerEnter.callback.AddListener((data) => {
-            OnButtonHover(button);
-        });
-        trigger.triggers.Add(pointerEnter);
+        EventTrigger.Entry enter = new EventTrigger.Entry();
+        enter.eventID = EventTriggerType.PointerEnter;
+        enter.callback.AddListener((data) => OnButtonHover(button));
+        trigger.triggers.Add(enter);
 
-        EventTrigger.Entry pointerExit = new EventTrigger.Entry();
-        pointerExit.eventID = EventTriggerType.PointerExit;
-        pointerExit.callback.AddListener((data) => {
-            OnButtonExit(button);
-        });
-        trigger.triggers.Add(pointerExit);
+        EventTrigger.Entry exit = new EventTrigger.Entry();
+        exit.eventID = EventTriggerType.PointerExit;
+        exit.callback.AddListener((data) => OnButtonExit(button));
+        trigger.triggers.Add(exit);
 
-        button.onClick.AddListener(() => PlayButtonClickSound());
+        button.onClick.AddListener(PlayButtonClickSound);
     }
 
     void OnButtonHover(Button button)
     {
-        if (buttonHoverSound != null && audioSource != null)
-        {
+        if (buttonHoverSound != null)
             audioSource.PlayOneShot(buttonHoverSound, 0.5f);
+
+        var text = button.GetComponentInChildren<TextMeshProUGUI>();
+        if (text != null)
+        {
+            text.color = new Color(0.15f, 0.08f, 0f); // ciemny "ink"
         }
 
-        Image buttonImage = button.GetComponent<Image>();
-        if (buttonImage != null)
-        {
-            Color originalColor = buttonImage.color;
-            buttonImage.color = new Color(originalColor.r * 0.8f, originalColor.g * 0.8f, originalColor.b * 0.8f, originalColor.a);
-        }
+        button.transform.localScale = Vector3.one * 1.05f;
     }
 
     void OnButtonExit(Button button)
     {
-        Image buttonImage = button.GetComponent<Image>();
-        if (buttonImage != null)
+        var text = button.GetComponentInChildren<TextMeshProUGUI>();
+        if (text != null)
         {
-            buttonImage.color = Color.white;
+            text.color = new Color(0.35f, 0.2f, 0.1f); // brąz papierowy
         }
+
+        button.transform.localScale = Vector3.one;
     }
 
     void PlayButtonClickSound()
     {
-        if (buttonClickSound != null && audioSource != null)
-        {
+        if (buttonClickSound != null)
             audioSource.PlayOneShot(buttonClickSound);
-        }
     }
 
     public void ShowMainMenu()
     {
         mainMenuPanel.SetActive(true);
-        classSelectionPanel.SetActive(false);
         settingsPanel.SetActive(false);
         confirmPanel.SetActive(false);
-    }
-
-    public void ShowClassSelection()
-    {
-        mainMenuPanel.SetActive(false);
-        classSelectionPanel.SetActive(true);
-        settingsPanel.SetActive(false);
-        confirmPanel.SetActive(false);
-
-        selectedClass = "";
-        confirmButton.gameObject.SetActive(false);
-        backToSelectionButton.gameObject.SetActive(false);
-        selectedClassText.text = "Wybierz swoją klasę";
     }
 
     public void ShowSettings()
     {
         mainMenuPanel.SetActive(false);
-        classSelectionPanel.SetActive(false);
         settingsPanel.SetActive(true);
         confirmPanel.SetActive(false);
-    }
-
-    public void SelectClass(string className)
-    {
-        selectedClass = className;
-        selectedClassText.text = "Wybrana klasa: " + className;
-        confirmButton.gameObject.SetActive(true);
-        backToSelectionButton.gameObject.SetActive(true);
-    }
-
-    public void ResetClassSelection()
-    {
-        selectedClass = "";
-        selectedClassText.text = "Wybierz swoją klasę";
-        confirmButton.gameObject.SetActive(false);
-        backToSelectionButton.gameObject.SetActive(false);
-    }
-
-    public void ConfirmClassSelection()
-    {
-        if (string.IsNullOrEmpty(selectedClass)) return;
-        StartGame();
     }
 
     public void ShowQuitConfirmation()
     {
         confirmPanel.SetActive(true);
-        confirmText.text = "Czy na pewno chcesz opuścić grę?";
+        confirmText.text = "Czy na pewno chcesz wyjść?";
     }
 
     public void StartGame()
     {
-        PlayerPrefs.SetString("SelectedClass", selectedClass);
-        PlayerPrefs.Save();
         SceneManager.LoadScene("ComicIntro");
     }
 
     void SetupAmbientMusic()
     {
-        if (ambientMusic != null && audioSource != null)
+        if (ambientMusic != null)
         {
             audioSource.clip = ambientMusic;
             audioSource.loop = true;
@@ -241,8 +154,8 @@ public class MainMenuManager : MonoBehaviour
     {
         Application.Quit();
 
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+#endif
     }
 }

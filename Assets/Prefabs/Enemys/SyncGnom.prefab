@@ -116,7 +116,7 @@ MonoBehaviour:
   shootingRange: 12
   attackSound: {fileID: 8300000, guid: 1acbcc1571569304d88696f6aceb5277, type: 3}
   deathSound: {fileID: 8300000, guid: 6e534f80cd014b441a76266b1009109b, type: 3}
-  detectMeleeSound: {fileID: 8300000, guid: 86dfcc901f6bad647ab051609c749c6d, type: 3}
+  detectMeleeSound: {fileID: 0}
   detectRangerSound: {fileID: 0}
 --- !u!195 &8947428421209363788
 NavMeshAgent:

@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
+
+
     [Header("Movement")]
     public float walkSpeed = 6f;
     public float sprintSpeed = 9f;
@@ -62,14 +64,16 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // Auto-setup kamery
         if (cameraPivot == null)
         {
             Camera cam = GetComponentInChildren<Camera>();
-
             if (cam != null)
                 cameraPivot = cam.transform.parent;
         }
+
+        
+        mouseSensitivity = PlayerPrefs.GetFloat("Sensitivity", 2f);
+        AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1f);
     }
 
     void Update()

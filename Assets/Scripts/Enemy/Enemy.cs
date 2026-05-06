@@ -26,6 +26,9 @@ public class Enemy : MonoBehaviour
     [Header("Combat")]
     public int attackDamage = 10;
 
+    [Header("Hit Reaction")]
+    public float flashDuration = 0.15f;
+
     [Header("Infection / Poison")]
     public int infectionMin = 0;
     public int infectionMax = 0;
@@ -42,7 +45,6 @@ public class Enemy : MonoBehaviour
     public AudioClip detectMeleeSound;
     public AudioClip detectRangerSound;
 
-
     private AudioSource audioSource;
     private Animator animator;
 
@@ -50,6 +52,8 @@ public class Enemy : MonoBehaviour
     private PlayerStats playerStats;
     private NavMeshAgent navAgent;
     private GameManager gameManager;
+
+    private Renderer[] renderers;
 
     private bool isDead = false;
     private bool playerDetected = false;
@@ -59,8 +63,6 @@ public class Enemy : MonoBehaviour
     private bool damageDealt = false;
 
     private float lastAttackTime = 0f;
-
-
 
     void Start()
     {
@@ -80,6 +82,8 @@ public class Enemy : MonoBehaviour
 
         navAgent = GetComponent<NavMeshAgent>();
 
+        renderers = GetComponentsInChildren<Renderer>();
+
         if (navAgent != null)
         {
             navAgent.speed = moveSpeed;
@@ -95,8 +99,6 @@ public class Enemy : MonoBehaviour
 
         audioSource.spatialBlend = 1f;
     }
-
-   
 
     void Update()
     {
@@ -134,7 +136,7 @@ public class Enemy : MonoBehaviour
             HandleRanger(distance);
     }
 
-   
+    // ================= MELEE =================
 
     void HandleMelee(float distance)
     {
@@ -177,8 +179,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-   
-
     public void DealDamage()
     {
         if (isDead || player == null) return;
@@ -192,24 +192,22 @@ public class Enemy : MonoBehaviour
 
         playerStats.TakeDamage(attackDamage);
 
-        
         if (infectionMax > 0)
         {
             int infection = Random.Range(infectionMin, infectionMax + 1);
             playerStats.AddInfection(infection);
         }
 
-        Rigidbody rb = player.GetComponent<Rigidbody>();
+        Rigidbody playerRb = player.GetComponent<Rigidbody>();
 
-        if (rb != null)
+        if (playerRb != null)
         {
             Vector3 dir =
                 (player.position - transform.position).normalized;
 
-            rb.AddForce(dir * 5f, ForceMode.Impulse);
+            playerRb.AddForce(dir * 5f, ForceMode.Impulse);
         }
     }
-
 
     public void EndAttack()
     {
@@ -222,7 +220,7 @@ public class Enemy : MonoBehaviour
         ResumeMoving();
     }
 
-   
+    // ================= RANGER =================
 
     void HandleRanger(float distance)
     {
@@ -269,35 +267,47 @@ public class Enemy : MonoBehaviour
             shootPoint.rotation
         );
 
-        Rigidbody rb = proj.GetComponent<Rigidbody>();
+        Rigidbody projRb = proj.GetComponent<Rigidbody>();
 
-        if (rb != null)
+        if (projRb != null)
         {
-            rb.AddForce(
+            projRb.AddForce(
                 shootPoint.forward * projectileForce,
                 ForceMode.Impulse
             );
         }
     }
 
-   
+    // ================= MOVEMENT =================
 
     void MoveTowardsPlayer()
     {
-        if (navAgent != null && navAgent.enabled)
+        if (navAgent != null &&
+            navAgent.enabled &&
+            navAgent.isOnNavMesh)
+        {
             navAgent.SetDestination(player.position);
+        }
     }
 
     void StopMoving()
     {
-        if (navAgent != null)
+        if (navAgent != null &&
+            navAgent.enabled &&
+            navAgent.isOnNavMesh)
+        {
             navAgent.isStopped = true;
+        }
     }
 
     void ResumeMoving()
     {
-        if (navAgent != null)
+        if (navAgent != null &&
+            navAgent.enabled &&
+            navAgent.isOnNavMesh)
+        {
             navAgent.isStopped = false;
+        }
     }
 
     void FacePlayer()
@@ -308,6 +318,8 @@ public class Enemy : MonoBehaviour
         if (dir != Vector3.zero)
             transform.rotation = Quaternion.LookRotation(dir);
     }
+
+    // ================= DETECTION SOUND =================
 
     void PlayDetectionSound()
     {
@@ -325,7 +337,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    
+    // ================= DAMAGE =================
 
     public void TakeDamage(int dmg)
     {
@@ -333,32 +345,39 @@ public class Enemy : MonoBehaviour
 
         currentHealth -= dmg;
 
+        playerDetected = true;
+
         StartCoroutine(DamageFlash());
 
         if (currentHealth <= 0)
             Die();
-        else
-            playerDetected = true;
     }
 
     System.Collections.IEnumerator DamageFlash()
     {
-        Renderer r = GetComponent<Renderer>();
-
-        if (r != null)
+        foreach (Renderer r in renderers)
         {
-            Color col = r.material.color;
+            if (r.material.HasProperty("_Color"))
+            {
+                r.material.color = Color.red;
+            }
+        }
 
-            r.material.color = Color.red;
+        yield return new WaitForSeconds(flashDuration);
 
-            yield return new WaitForSeconds(0.15f);
-
-            if (!isDead)
-                r.material.color = col;
+        if (!isDead)
+        {
+            foreach (Renderer r in renderers)
+            {
+                if (r.material.HasProperty("_Color"))
+                {
+                    r.material.color = Color.white;
+                }
+            }
         }
     }
 
-    
+    // ================= DEATH =================
 
     void Die()
     {
@@ -433,7 +452,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, 1f);
     }
 
-
+    // ================= GIZMOS =================
 
     void OnDrawGizmosSelected()
     {

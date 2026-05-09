@@ -50,8 +50,18 @@ public class PlayerStats : MonoBehaviour
     public int expPerSkillPoint = 25;
     private int expSinceLastPoint = 0;
 
+    [Header("Audio")]
+    public AudioClip hurtSound;
+
+    private AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
+
         currentHealth = maxHealth;
         currentStamina = maxStamina;
         currentDamage = baseDamage;
@@ -118,6 +128,11 @@ public class PlayerStats : MonoBehaviour
         if (isDead || gameWon) return;
 
         currentHealth -= damage;
+       
+        if (hurtSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(hurtSound);
+        }
 
         StartCoroutine(DamageFlash());
 
@@ -127,7 +142,6 @@ public class PlayerStats : MonoBehaviour
             Die();
         }
     }
-
     System.Collections.IEnumerator DamageFlash()
     {
         yield return null;

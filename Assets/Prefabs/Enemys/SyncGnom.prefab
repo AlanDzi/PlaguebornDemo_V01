@@ -111,8 +111,6 @@ MonoBehaviour:
   detectionRange: 3
   attackCooldown: 2
   attackDamage: 15
-  knockbackForce: 0.5
-  knockbackUpward: 0
   flashDuration: 0.2
   infectionMin: 2
   infectionMax: 5
@@ -192,7 +190,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 1

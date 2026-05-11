@@ -52682,7 +52682,7 @@ PrefabInstance:
     - target: {fileID: 1620181614295979610, guid: 36ed619ab30d30246947d609a8db85e8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cf7a99dcc0e4c5d4bba5eae306c0a906, type: 3}
+      objectReference: {fileID: 21300000, guid: 8237a174830850a479be0734cebf21e4, type: 3}
     - target: {fileID: 1620181614295979610, guid: 36ed619ab30d30246947d609a8db85e8, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -52811,6 +52811,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6564037668191996186, guid: 36ed619ab30d30246947d609a8db85e8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c90b2e4347bba2c42b68f8f8809e998b, type: 3}
     - target: {fileID: 7866302651859671423, guid: 36ed619ab30d30246947d609a8db85e8, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -90862,7 +90866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6137113333574394451, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
       propertyPath: jumpForce
-      value: 7
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6137113333574394451, guid: 3ae21e9d227a00f46b51f565af3a94ab, type: 3}
       propertyPath: walkSpeed

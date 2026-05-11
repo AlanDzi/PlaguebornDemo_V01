@@ -168,7 +168,11 @@ public class PlayerController : MonoBehaviour
                 moveDir.z * speed
             );
 
-        rb.linearVelocity = targetVelocity;
+        rb.linearVelocity = Vector3.Lerp(
+     rb.linearVelocity,
+     targetVelocity,
+     10f * Time.fixedDeltaTime
+ );
     }
 
     // ================= STAMINA =================

@@ -129,6 +129,11 @@ public class Enemy : MonoBehaviour
 
         if (!playerDetected)
             return;
+        
+        if (!isAttacking)
+        {
+            ResumeMoving();
+        }
 
         if (enemyType == EnemyType.Melee)
             HandleMelee(distance);

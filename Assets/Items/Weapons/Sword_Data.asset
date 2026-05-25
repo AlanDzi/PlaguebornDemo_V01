@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ae0e7eb1f30b7a43b5348feebb21f9a, type: 3}
-  m_Name: BasicAxe
+  m_Name: Sword_Data
   m_EditorClassIdentifier: 
-  weaponName: Axe
-  baseDamage: 30
-  attackSpeed: 0.8
+  weaponName: BasicSword
+  baseDamage: 20
+  attackSpeed: 1
   attackRange: 1
-  attackCooldown: 0.9
-  staminaCost: 20
-  critChance: 0.05
-  critMultiplier: 2.2
-  weaponPrefab: {fileID: 919132149155446097, guid: 7646fecc45f418a4785de8b180f0f08c, type: 3}
-  swingRotation: {x: -70, y: 20, z: 0}
+  attackCooldown: 0.7
+  staminaCost: 10
+  critChance: 0.1
+  critMultiplier: 2
+  weaponPrefab: {fileID: 919132149155446097, guid: 973cd0fc5265bbb4285608fbaf1f60ae, type: 3}
+  swingRotation: {x: -40, y: 90, z: 0}
   swingPositionOffset: {x: -0.15, y: -0.1, z: 0.25}
   swingSpeed: 14
   returnSpeed: 16
-  hitSound: {fileID: 8300000, guid: a36d75eec51be6648b0169320b3028ff, type: 3}
+  hitSound: {fileID: 8300000, guid: 41ae607924de7b04cafae155d16cd474, type: 3}
   missSound: {fileID: 0}
-  swingSound: {fileID: 8300000, guid: a8a9e6520470094409bad9dbe7e8720f, type: 3}
+  swingSound: {fileID: 8300000, guid: 81ca5e5391bb70e4ca2e1f928f3f010f, type: 3}

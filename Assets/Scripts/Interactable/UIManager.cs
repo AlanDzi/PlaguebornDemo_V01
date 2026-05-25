@@ -6,6 +6,11 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
    
+    [Header("Inventory")]
+    public GameObject inventoryPanel;
+    private bool isInventoryOpen;
+
+
     [Header("Skill Tree")]
     public GameObject skillTreePanel;
     private bool isSkillTreeOpen;
@@ -48,7 +53,12 @@ public class UIManager : MonoBehaviour
 
     private PlayerInteract playerInteract;
 
-    public bool IsAnyUIOpen => isNoteOpen || isChestOpen || isEndGameOpen || isSkillTreeOpen;
+    public bool IsAnyUIOpen =>
+     isNoteOpen ||
+     isChestOpen ||
+     isEndGameOpen ||
+     isSkillTreeOpen ||
+     isInventoryOpen;
 
     private void Awake()
     {
@@ -286,5 +296,8 @@ public class UIManager : MonoBehaviour
         if (!IsAnyUIOpen)
             Time.timeScale = 1f;
     }
-
+    public void SetInventoryState(bool state)
+    {
+        isInventoryOpen = state;
+    }
 }

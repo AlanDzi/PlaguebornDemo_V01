@@ -10,9 +10,7 @@ public static class SaveSystem
     private const string INFECTION_KEY = "PlayerInfection";
     private const string DAMAGE_KEY = "PlayerDamage";
 
-    private const string ANTIDOTES_KEY = "Antidotes";
-    private const string BANDAGES_KEY = "Bandages";
-    private const string COINS_KEY = "Coins";
+   
 
     private const string FIRST_LEVEL_KEY = "FirstLevel";
 
@@ -32,12 +30,7 @@ public static class SaveSystem
             PlayerPrefs.SetInt(DAMAGE_KEY, playerStats.currentDamage);
         }
 
-        if (inventoryManager != null)
-        {
-            PlayerPrefs.SetInt(ANTIDOTES_KEY, inventoryManager.antidotes);
-            PlayerPrefs.SetInt(BANDAGES_KEY, inventoryManager.bandages);
-            PlayerPrefs.SetInt(COINS_KEY, inventoryManager.coins);
-        }
+        
 
         PlayerPrefs.SetInt(FIRST_LEVEL_KEY, 0);
         PlayerPrefs.Save();
@@ -66,12 +59,6 @@ public static class SaveSystem
             playerStats.currentDamage = PlayerPrefs.GetInt(DAMAGE_KEY, 20);
         }
 
-        if (inventoryManager != null)
-        {
-            inventoryManager.antidotes = PlayerPrefs.GetInt(ANTIDOTES_KEY, 1);
-            inventoryManager.bandages = PlayerPrefs.GetInt(BANDAGES_KEY, 1);
-            inventoryManager.coins = PlayerPrefs.GetInt(COINS_KEY, 0);
-        }
     }
 
     public static void ResetData()
@@ -83,9 +70,7 @@ public static class SaveSystem
         PlayerPrefs.DeleteKey(MAX_HEALTH_KEY);
         PlayerPrefs.DeleteKey(INFECTION_KEY);
         PlayerPrefs.DeleteKey(DAMAGE_KEY);
-        PlayerPrefs.DeleteKey(ANTIDOTES_KEY);
-        PlayerPrefs.DeleteKey(BANDAGES_KEY);
-        PlayerPrefs.DeleteKey(COINS_KEY);
+       
         PlayerPrefs.SetInt(FIRST_LEVEL_KEY, 1);
         PlayerPrefs.Save();
     }

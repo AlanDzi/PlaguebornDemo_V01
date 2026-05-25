@@ -54,23 +54,19 @@ public class WeaponController : MonoBehaviour
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
 
-        if (weapons != null && weapons.Length > 0)
-        {
-            currentWeaponIndex = 0;
-            EquipWeapon(weapons[currentWeaponIndex]);
-        }
+       
 
         currentDistance = maxDistance;
     }
 
     void Update()
     {
-        if (UIManager.Instance != null && UIManager.Instance.IsAnyUIOpen)
+        if (UIManager.Instance != null &&
+            UIManager.Instance.IsAnyUIOpen)
             return;
 
-        HandleWeaponSwitch();
-
-        if (Input.GetMouseButtonDown(0) && CanAttack())
+        if (Input.GetMouseButtonDown(0) &&
+            CanAttack())
         {
             Attack();
         }
@@ -80,40 +76,27 @@ public class WeaponController : MonoBehaviour
         ApplyIdleTransform();
     }
 
-    // ================= WEAPON SWITCH =================
 
-    void HandleWeaponSwitch()
-    {
-        if (weapons == null || weapons.Length <= 1) return;
-
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-
-        if (scroll > 0f)
-        {
-            currentWeaponIndex++;
-            if (currentWeaponIndex >= weapons.Length)
-                currentWeaponIndex = 0;
-
-            EquipWeapon(weapons[currentWeaponIndex]);
-        }
-        else if (scroll < 0f)
-        {
-            currentWeaponIndex--;
-            if (currentWeaponIndex < 0)
-                currentWeaponIndex = weapons.Length - 1;
-
-            EquipWeapon(weapons[currentWeaponIndex]);
-        }
-    }
 
     public void EquipWeapon(WeaponData newWeapon)
     {
-        if (newWeapon == null) return;
-
         weaponData = newWeapon;
+
+        if (weaponData == null)
+        {
+            if (currentWeapon != null)
+                Destroy(currentWeapon.gameObject);
+
+            currentWeapon = null;
+            return;
+        }
+
         SpawnWeapon();
 
-        Debug.Log("Weapon: " + weaponData.weaponName);
+        Debug.Log(
+            "Equipped: " +
+            weaponData.weaponName
+        );
     }
 
     // ================= SPAWN =================
@@ -145,6 +128,9 @@ public class WeaponController : MonoBehaviour
     void Attack()
     {
         if (weaponData == null) return;
+        
+        if (currentWeapon == null)
+            SpawnWeapon();
 
         lastAttackTime = Time.time;
 
@@ -226,33 +212,59 @@ public class WeaponController : MonoBehaviour
 
     IEnumerator SwingAnimation()
     {
-        if (currentWeapon == null || weaponData == null)
+        if (weaponData == null)
             yield break;
+
+        if (currentWeapon == null)
+        {
+            SpawnWeapon();
+
+            if (currentWeapon == null)
+                yield break;
+        }
 
         isSwinging = true;
 
         Quaternion targetRot =
-            startRot * Quaternion.Euler(weaponData.swingRotation);
+            startRot *
+            Quaternion.Euler(
+                weaponData.swingRotation
+            );
 
         Vector3 targetPos =
-            startPos + weaponData.swingPositionOffset;
+            startPos +
+            weaponData.swingPositionOffset;
 
         while (
-            Quaternion.Angle(currentWeapon.localRotation, targetRot) > 1f ||
-            Vector3.Distance(currentWeapon.localPosition, targetPos) > 0.01f
+            Quaternion.Angle(
+                currentWeapon.localRotation,
+                targetRot
+            ) > 1f ||
+
+            Vector3.Distance(
+                currentWeapon.localPosition,
+                targetPos
+            ) > 0.01f
         )
         {
-            currentWeapon.localRotation = Quaternion.Slerp(
-                currentWeapon.localRotation,
-                targetRot,
-                Time.deltaTime * weaponData.swingSpeed
-            );
+            if (currentWeapon == null)
+                yield break;
 
-            currentWeapon.localPosition = Vector3.Lerp(
-                currentWeapon.localPosition,
-                targetPos,
-                Time.deltaTime * weaponData.swingSpeed
-            );
+            currentWeapon.localRotation =
+                Quaternion.Slerp(
+                    currentWeapon.localRotation,
+                    targetRot,
+                    Time.deltaTime *
+                    weaponData.swingSpeed
+                );
+
+            currentWeapon.localPosition =
+                Vector3.Lerp(
+                    currentWeapon.localPosition,
+                    targetPos,
+                    Time.deltaTime *
+                    weaponData.swingSpeed
+                );
 
             yield return null;
         }
@@ -260,27 +272,47 @@ public class WeaponController : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
 
         while (
-            Quaternion.Angle(currentWeapon.localRotation, startRot) > 1f ||
-            Vector3.Distance(currentWeapon.localPosition, startPos) > 0.01f
+            Quaternion.Angle(
+                currentWeapon.localRotation,
+                startRot
+            ) > 1f ||
+
+            Vector3.Distance(
+                currentWeapon.localPosition,
+                startPos
+            ) > 0.01f
         )
         {
-            currentWeapon.localRotation = Quaternion.Slerp(
-                currentWeapon.localRotation,
-                startRot,
-                Time.deltaTime * weaponData.returnSpeed
-            );
+            if (currentWeapon == null)
+                yield break;
 
-            currentWeapon.localPosition = Vector3.Lerp(
-                currentWeapon.localPosition,
-                startPos,
-                Time.deltaTime * weaponData.returnSpeed
-            );
+            currentWeapon.localRotation =
+                Quaternion.Slerp(
+                    currentWeapon.localRotation,
+                    startRot,
+                    Time.deltaTime *
+                    weaponData.returnSpeed
+                );
+
+            currentWeapon.localPosition =
+                Vector3.Lerp(
+                    currentWeapon.localPosition,
+                    startPos,
+                    Time.deltaTime *
+                    weaponData.returnSpeed
+                );
 
             yield return null;
         }
 
-        currentWeapon.localRotation = startRot;
-        currentWeapon.localPosition = startPos;
+        if (currentWeapon != null)
+        {
+            currentWeapon.localRotation =
+                startRot;
+
+            currentWeapon.localPosition =
+                startPos;
+        }
 
         isSwinging = false;
     }

@@ -2,50 +2,40 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour, IInteractable
 {
-    public string promptText = "E - podnieœ";
+    [Header("Item")]
+    public ItemData itemData;
 
-    public ChestItemType itemType;
     public int amount = 1;
 
-    private InventoryManager inventory;
-
-    void Start()
-    {
-        inventory = FindFirstObjectByType<InventoryManager>();
-    }
+    [Header("UI")]
+    public string promptText = "E - Podnieœ";
 
     public string GetPromptText()
     {
-        return promptText;
+        if (itemData == null)
+            return promptText;
+
+        return promptText + " " + itemData.itemName;
     }
 
     public void Interact()
     {
-        if (inventory == null) return;
-
-        if (UIManager.Instance != null && UIManager.Instance.IsAnyUIOpen)
+        if (itemData == null)
             return;
 
-        bool added = false;
+        if (UIManager.Instance != null &&
+            UIManager.Instance.IsAnyUIOpen)
+            return;
 
-        switch (itemType)
+        bool added =
+            InventoryManager.Instance.AddItem(
+                itemData,
+                amount
+            );
+
+        if (added)
         {
-            case ChestItemType.Bandage:
-                added = inventory.AddBandage(amount);
-                break;
-
-            case ChestItemType.Antidote:
-                added = inventory.AddAntidote(amount);
-                break;
-
-            case ChestItemType.Coins:
-                inventory.AddCoins(amount);
-                added = true;
-                break;
+            Destroy(gameObject);
         }
-
-        if (!added) return;
-
-        Destroy(gameObject);
     }
 }

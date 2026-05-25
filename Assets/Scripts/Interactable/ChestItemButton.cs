@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+
 public class ChestItemButton : MonoBehaviour
 {
     public TMP_Text label;
@@ -15,20 +16,13 @@ public class ChestItemButton : MonoBehaviour
         item = newItem;
         chest = newChest;
 
-        // ZABEZPIECZENIE
-        if (label == null)
-        {
-            Debug.LogError("ChestItemButton: LABEL NOT ASSIGNED!");
+        if (label == null || button == null)
             return;
-        }
 
-        if (button == null)
-        {
-            Debug.LogError("ChestItemButton: BUTTON NOT ASSIGNED!");
-            return;
-        }
-
-        label.text = item.type + " x" + item.amount;
+        label.text =
+            item.itemData.itemName +
+            " x" +
+            item.amount;
 
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(OnClick);
@@ -36,7 +30,18 @@ public class ChestItemButton : MonoBehaviour
 
     void OnClick()
     {
-        if (chest != null && item != null)
-            chest.TakeItem(item);
+        if (item == null)
+            return;
+
+        bool added =
+            InventoryManager.Instance.AddItem(
+                item.itemData,
+                item.amount
+            );
+
+        if (!added)
+            return;
+
+        chest.TakeItem(item);
     }
 }

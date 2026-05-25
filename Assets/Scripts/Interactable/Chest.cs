@@ -1,18 +1,13 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Chest : MonoBehaviour, IInteractable
 {
-    public string promptText = "E - otwórz skrzyniê";
-
+    [Header("Chest Items")]
     public List<ChestItem> items = new List<ChestItem>();
 
-    private InventoryManager inventory;
-
-    void Start()
-    {
-        inventory = FindFirstObjectByType<InventoryManager>();
-    }
+    [Header("UI")]
+    public string promptText = "E - Otwórz skrzyniê";
 
     public string GetPromptText()
     {
@@ -21,39 +16,22 @@ public class Chest : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (UIManager.Instance == null) return;
-        if (UIManager.Instance.IsAnyUIOpen) return;
-
-        UIManager.Instance.ShowChest(this);
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowChest(this);
+        }
     }
 
-    // <<< TO BY£O BRAKIEM >>>
     public void TakeItem(ChestItem item)
     {
-        if (inventory == null) return;
-
-        bool added = false;
-
-        switch (item.type)
-        {
-            case ChestItemType.Bandage:
-                added = inventory.AddBandage(item.amount);
-                break;
-
-            case ChestItemType.Antidote:
-                added = inventory.AddAntidote(item.amount);
-                break;
-
-            case ChestItemType.Coins:
-                inventory.AddCoins(item.amount);
-                added = true;
-                break;
-        }
-
-        if (!added) return;
+        if (item == null)
+            return;
 
         items.Remove(item);
 
-        UIManager.Instance.RefreshChest(this);
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.RefreshChest(this);
+        }
     }
 }

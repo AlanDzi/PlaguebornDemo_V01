@@ -17,6 +17,9 @@ public class Enemy : MonoBehaviour
     public int currentHealth;
     public int experienceReward = 25;
 
+    [Header("Loot")]
+    public ItemData goldItem;
+
     [Header("Movement & AI")]
     public float moveSpeed = 3.5f;
     public float attackRange = 2f;
@@ -401,10 +404,13 @@ public class Enemy : MonoBehaviour
 
         playerStats.AddExperience(experienceReward);
 
-        InventoryManager inv = FindFirstObjectByType<InventoryManager>();
-
-        if (inv != null)
-            inv.AddCoins(Random.Range(5, 16));
+        if (goldItem != null)
+        {
+            InventoryManager.Instance.AddItem(
+                goldItem,
+                Random.Range(5, 16)
+            );
+        }
 
         Collider col = GetComponent<Collider>();
 

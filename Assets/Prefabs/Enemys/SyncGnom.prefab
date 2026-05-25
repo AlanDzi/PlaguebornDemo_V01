@@ -107,9 +107,9 @@ MonoBehaviour:
   currentHealth: 0
   experienceReward: 25
   moveSpeed: 2
-  attackRange: 1.5
+  attackRange: 1
   detectionRange: 3
-  attackCooldown: 2
+  attackCooldown: 1.7
   attackDamage: 15
   flashDuration: 0.2
   infectionMin: 2

@@ -22,7 +22,7 @@ MonoBehaviour:
   - 0.5
   - 0.5
   - 1
-  Icon: {fileID: 21300000, guid: 6ca75c98a9886f34b84e0f3983ea6462, type: 3}
+  Icon: {fileID: 21300000, guid: 1f7b13c1c243ca0468e11de00d32ec97, type: 3}
   UnlockWhenParentMaxed: 1
   UnlockAtParentLevel: 1
   ParentUpgrade: {fileID: 11400000, guid: 4050223244a53634087aa699a9e9420a, type: 2}

@@ -18,7 +18,7 @@ MonoBehaviour:
   Costs: 05000000
   Values:
   - 2
-  Icon: {fileID: 21300000, guid: c57bcf1debd899c42a4851fcd771dbed, type: 3}
+  Icon: {fileID: 21300000, guid: 6c743808f111a4c4ab9c3de4bfcc63c4, type: 3}
   UnlockWhenParentMaxed: 1
   UnlockAtParentLevel: 1
   ParentUpgrade: {fileID: 11400000, guid: 4d13fdade9b4e954ba56e73378f9d41a, type: 2}

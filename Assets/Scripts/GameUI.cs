@@ -33,12 +33,12 @@ public class GameUI : MonoBehaviour
     public AudioClip deathSound;
 
     [Header("Colors")]
-    public Color healthColor = Color.green;
+    public Color healthColor = Color.red;
     public Color lowHealthColor = Color.red;
     public Color staminaColor = Color.blue;
     public Color lowStaminaColor = Color.cyan;
-    public Color infectionColor = Color.yellow;
-    public Color highInfectionColor = Color.red;
+    public Color infectionColor = Color.green;
+    public Color highInfectionColor = new Color(0.5f, 1f, 0.5f);
 
     PlayerStats playerStats;
     PlayerController playerController;

@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour
     [Header("Health")]
     public int maxHealth = 100;
     public int currentHealth;
+  
 
     [Header("Stamina System")]
     public int maxStamina = 100;
@@ -22,6 +23,7 @@ public class PlayerStats : MonoBehaviour
     public int currentInfection = 0;
     public float infectionDamageRate = 1f;
     public int baseDamagePerTick = 1;
+  
 
     [Header("Combat")]
     public int baseDamage = 20;

@@ -2,30 +2,54 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-
 public class ChestItemButton : MonoBehaviour
 {
-    public TMP_Text label;
+    [Header("UI")]
+    public Image icon;
+    public TMP_Text amountText;
     public Button button;
 
     private ChestItem item;
     private Chest chest;
 
-    public void Setup(ChestItem newItem, Chest newChest)
+    public void Setup(
+        ChestItem newItem,
+        Chest newChest
+    )
     {
         item = newItem;
         chest = newChest;
 
-        if (label == null || button == null)
+        if (
+            item == null ||
+            item.itemData == null
+        )
+        {
+            gameObject.SetActive(false);
             return;
+        }
 
-        label.text =
-            item.itemData.itemName +
-            " x" +
-            item.amount;
+        if (icon != null)
+        {
+            icon.sprite =
+                item.itemData.icon;
 
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(OnClick);
+            icon.enabled = true;
+        }
+
+        if (amountText != null)
+        {
+            amountText.text =
+                item.amount > 1
+                ? item.amount.ToString()
+                : "";
+        }
+
+        if (button != null)
+        {
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(OnClick);
+        }
     }
 
     void OnClick()

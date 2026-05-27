@@ -5,30 +5,35 @@ public class CrosshairTarget : MonoBehaviour
 {
     public Camera playerCamera;
     public Image crosshair;
+    public Image crosshair1;
+    public Image crosshair2;
 
+    public GameObject crosshairGO;
     public float distance = 50f;
 
     public Color normalColor = Color.white;
     public Color enemyColor = Color.red;
-    public Color interactColor = new Color(1f, 0.5f, 0f); 
+    public Color interactColor = new Color(1f, 0.5f, 0f);
 
     public LayerMask interactLayer;
 
     void Update()
     {
+        if (crosshairGO == null)
+            return;
 
         if ((UIManager.Instance != null && UIManager.Instance.IsAnyUIOpen)
-    || PauseManager.IsPausedStatic)
+            || PauseManager.IsPausedStatic)
         {
-            if (crosshair.enabled)
-                crosshair.enabled = false;
+            if (crosshairGO.activeSelf)
+                crosshairGO.SetActive(false);
 
             return;
         }
         else
         {
-            if (!crosshair.enabled)
-                crosshair.enabled = true;
+            if (!crosshairGO.activeSelf)
+                crosshairGO.SetActive(true);
         }
 
         Ray ray = new Ray(

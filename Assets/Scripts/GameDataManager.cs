@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class GameDataManager : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class GameDataManager : MonoBehaviour
     public int playerInfection = 0;
 
     public int playerDamage = 20;
+
 
     [Header("First Level Setup")]
     public bool isFirstLevel = true;

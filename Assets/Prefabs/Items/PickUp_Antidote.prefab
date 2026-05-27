@@ -28,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2988157594547789546}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.137, y: -6.415, z: -2.348}
-  m_LocalScale: {x: 3.2775195, y: 2.9502938, z: 1.8273166}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 1.9893458, y: -8.940042, z: 17.080294}
+  m_LocalScale: {x: 3.2775195, y: 2.9502935, z: 1.8273166}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c3bdffe1f69c34fbc9227dec236533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptText: "E - podnie\u015B"
-  itemType: 1
+  itemData: {fileID: 11400000, guid: a155d3a104b21da468f901277b515ec9, type: 2}
   amount: 1
+  promptText: "E - podnie\u015B"

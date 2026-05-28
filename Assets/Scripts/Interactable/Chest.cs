@@ -16,10 +16,13 @@ public class Chest : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (UIManager.Instance != null)
-        {
-            UIManager.Instance.ShowChest(this);
-        }
+        if (UIManager.Instance == null)
+            return;
+
+        if (UIManager.Instance.IsAnyUIOpen)
+            return;
+
+        UIManager.Instance.ShowChest(this);
     }
 
     public void TakeItem(ChestItem item)

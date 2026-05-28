@@ -1,42 +1,45 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelExit : MonoBehaviour
+public class LevelExit :
+    MonoBehaviour,
+    IInteractable
 {
     [Header("Boss do pokonania")]
     public GameObject boss;
 
-    [Header("Ustawienia")]
-    public KeyCode interactKey = KeyCode.E;
-    public float interactDistance = 3f;
+    [Header("Prompt")]
+    public string lockedPrompt =
+        "Pokonaj bossa";
 
-    private Transform player;
+    public string openPrompt =
+        "E - Zejdü niøej";
 
-    void Start()
+    public string GetPromptText()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (boss == null)
+            return openPrompt;
+
+        return lockedPrompt;
     }
 
-    void Update()
+    public void Interact()
     {
-        if (player == null || boss == null)
+        if (boss != null)
             return;
 
-        float distance = Vector3.Distance(player.position, transform.position);
-
-        if (distance <= interactDistance && Input.GetKeyDown(interactKey))
-        {
-            // jeúli boss zosta≥ zniszczony
-            if (boss == null)
-            {
-                LoadNextLevel();
-            }
-        }
+        LoadNextLevel();
     }
 
     void LoadNextLevel()
     {
-        int currentIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentIndex + 1);
+        int currentIndex =
+            SceneManager
+                .GetActiveScene()
+                .buildIndex;
+
+        SceneManager.LoadScene(
+            currentIndex + 1
+        );
     }
 }

@@ -49,6 +49,11 @@ public class InventoryUI : MonoBehaviour
 
     public void OpenInventory()
     {
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.HideChest();
+        }
+
         isOpen = true;
 
         inventoryPanel.SetActive(true);

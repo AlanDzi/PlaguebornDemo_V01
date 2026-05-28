@@ -16,6 +16,11 @@ public class MainMenuManager : MonoBehaviour
     public Button settingsButton;
     public Button quitButton;
 
+    [Header("Info Panel")]
+    public GameObject infoPanel;
+    public Button infoButton;
+    public Button closeInfoButton;
+
     [Header("Settings")]
     public Button backFromSettingsButton;
 
@@ -43,6 +48,8 @@ public class MainMenuManager : MonoBehaviour
         ShowMainMenu();
         SetupButtons();
         SetupAmbientMusic();
+        if (infoPanel != null)
+            infoPanel.SetActive(false);
     }
 
     void SetupButtons()
@@ -62,6 +69,18 @@ public class MainMenuManager : MonoBehaviour
         AddButtonEffects(backFromSettingsButton);
         AddButtonEffects(yesButton);
         AddButtonEffects(noButton);
+       
+        if (infoButton != null)
+        {
+            infoButton.onClick.AddListener(ShowInfoPanel);
+            AddButtonEffects(infoButton);
+        }
+
+        if (closeInfoButton != null)
+        {
+            closeInfoButton.onClick.AddListener(HideInfoPanel);
+            AddButtonEffects(closeInfoButton);
+        }
     }
 
     void AddButtonEffects(Button button)
@@ -138,6 +157,23 @@ public class MainMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("ComicIntro");
     }
+
+    public void ShowInfoPanel()
+    {
+        mainMenuPanel.SetActive(false);
+
+        if (infoPanel != null)
+            infoPanel.SetActive(true);
+    }
+
+    public void HideInfoPanel()
+    {
+        if (infoPanel != null)
+            infoPanel.SetActive(false);
+
+        ShowMainMenu();
+    }
+
 
     void SetupAmbientMusic()
     {

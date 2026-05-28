@@ -28,6 +28,10 @@ public class PauseManager : MonoBehaviour
     public AudioClip buttonHoverSound;
     public AudioClip buttonClickSound;
 
+    [Header("Info Panel")]
+    public GameObject infoPanel;
+    public Button closeInfoButton;
+
     private bool isPaused = false;
     private AudioSource audioSource;
     private PlayerController playerController;
@@ -50,6 +54,9 @@ public class PauseManager : MonoBehaviour
 
         SetupButtons();
         SetupSettings();
+
+        if (infoPanel != null)
+            infoPanel.SetActive(false);
     }
 
     void Update()
@@ -113,6 +120,12 @@ public class PauseManager : MonoBehaviour
         {
             noButton.onClick.AddListener(HideConfirmPanel);
             AddButtonEffects(noButton);
+        }
+
+        if (closeInfoButton != null)
+        {
+            closeInfoButton.onClick.AddListener(HideInfoPanel);
+            AddButtonEffects(closeInfoButton);
         }
     }
 
@@ -274,5 +287,17 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public void ShowInfoPanel()
+    {
+        if (infoPanel != null)
+            infoPanel.SetActive(true);
+    }
+
+    public void HideInfoPanel()
+    {
+        if (infoPanel != null)
+            infoPanel.SetActive(false);
     }
 }

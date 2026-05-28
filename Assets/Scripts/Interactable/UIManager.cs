@@ -300,4 +300,23 @@ public class UIManager : MonoBehaviour
     {
         isInventoryOpen = state;
     }
+
+    public void HideChest()
+    {
+        isChestOpen = false;
+
+        if (chestPanel != null)
+        {
+            chestPanel.SetActive(false);
+        }
+
+        blockInteractUntil = Time.time + 0.2f;
+
+        LockPlayer(false);
+
+        if (!IsAnyUIOpen)
+        {
+            Time.timeScale = 1f;
+        }
+    }
 }

@@ -125,4 +125,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: a155d3a104b21da468f901277b515ec9, type: 2}
   amount: 1
-  promptText: "E - podnie\u015B"
+  promptText: E - Pick Up

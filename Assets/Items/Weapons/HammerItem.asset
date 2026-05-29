@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f77c5d8df2b1d044a8597a9dee64bbc, type: 3}
-  m_Name: antidoteItem
+  m_Name: HammerItem
   m_EditorClassIdentifier: 
-  itemName: Antidote
+  itemName: 
   description: 
-  icon: {fileID: 21300000, guid: 0e1541e0514aad04fa9184bc8b7a7574, type: 3}
-  itemType: 1
-  stackable: 1
-  maxStack: 4
+  icon: {fileID: 0}
+  itemType: 0
+  stackable: 0
+  maxStack: 1
   worldPrefab: {fileID: 0}
   healAmount: 0
-  infectionReduce: 10
-  weaponData: {fileID: 0}
+  infectionReduce: 0
+  weaponData: {fileID: 11400000, guid: 1546a3d5cf48670418269ae361d941d0, type: 2}

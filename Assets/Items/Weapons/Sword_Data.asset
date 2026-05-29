@@ -17,7 +17,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackRange: 1
   attackCooldown: 0.7
-  staminaCost: 10
+  staminaCost: 13
   critChance: 0.1
   critMultiplier: 2
   weaponPrefab: {fileID: 919132149155446097, guid: 973cd0fc5265bbb4285608fbaf1f60ae, type: 3}

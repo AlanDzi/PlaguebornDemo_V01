@@ -8,7 +8,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
     public int amount = 1;
 
     [Header("UI")]
-    public string promptText = "E - Podnieœ";
+    public string promptText = "E - Pick Up";
 
     public string GetPromptText()
     {

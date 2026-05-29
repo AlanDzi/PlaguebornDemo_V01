@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ae0e7eb1f30b7a43b5348feebb21f9a, type: 3}
-  m_Name: Hammer_Data
+  m_Name: Dagger_Data
   m_EditorClassIdentifier: 
-  weaponName: Hammer
-  baseDamage: 40
-  attackSpeed: 0.5
-  attackRange: 1.5
-  attackCooldown: 1
-  staminaCost: 25
-  critChance: 0.2
+  weaponName: Dagger
+  baseDamage: 15
+  attackSpeed: 1.5
+  attackRange: 2
+  attackCooldown: 0.5
+  staminaCost: 10
+  critChance: 0.1
   critMultiplier: 2
-  weaponPrefab: {fileID: 919132149155446097, guid: f68c9528619ea7541b75bcfdb37a2e8c, type: 3}
+  weaponPrefab: {fileID: 919132149155446097, guid: d9698504d76808347845e1798faa3f93, type: 3}
   swingRotation: {x: -70, y: 20, z: 0}
   swingPositionOffset: {x: -0.15, y: -0.1, z: 0.25}
   swingSpeed: 14
   returnSpeed: 16
-  hitSound: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 41ae607924de7b04cafae155d16cd474, type: 3}
   missSound: {fileID: 0}
-  swingSound: {fileID: 0}
+  swingSound: {fileID: 8300000, guid: 81ca5e5391bb70e4ca2e1f928f3f010f, type: 3}

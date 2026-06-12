@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5591807148003370017}
-  - component: {fileID: 6898159352521387142}
+  - component: {fileID: 2695422141917676613}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6898159352521387142
+--- !u!114 &2695422141917676613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,9 +41,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 690308360519894063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b4d7585d3b0c924886395f8bfd284b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6653fe89a3515d04fb285afe62202843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryPanel: {fileID: 0}
+  skillTreePanel: {fileID: 0}
   noteGroup: {fileID: 0}
   noteText: {fileID: 0}
   interactionPrompt: {fileID: 0}
@@ -51,3 +53,9 @@ MonoBehaviour:
   chestPanel: {fileID: 0}
   chestContent: {fileID: 0}
   chestItemButtonPrefab: {fileID: 1099364045240490789, guid: 0a9904580fbb3ee4a8f266b1fb0cc75a, type: 3}
+  endGamePanel: {fileID: 0}
+  noteOpenSound: {fileID: 8300000, guid: a3cc0e607f38f13499c6d68d19c9126f, type: 3}
+  noteCloseSound: {fileID: 8300000, guid: a3cc0e607f38f13499c6d68d19c9126f, type: 3}
+  chestOpenSound: {fileID: 8300000, guid: 96fa4c90b94581f409220788e3012eb6, type: 3}
+  chestCloseSound: {fileID: 8300000, guid: 8b31b3526cc73184ca557f9acaf1f2d7, type: 3}
+  uiAudioSource: {fileID: 0}

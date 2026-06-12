@@ -10,20 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f896120182dd854896c2ab7adbc9c27, type: 3}
-  m_Name: HealthBoost
+  m_Name: ProjectileDamageUP
   m_EditorClassIdentifier: 
-  UpgradeName: "Wi\u0119cej \u017Cycia"
+  UpgradeName: Gunner
   Descriptions:
-  - "Zwi\u0119ksz \u017Cycie o 20"
-  - "Zwi\u0119ksz \u017Cycie o 30"
-  - "Zwi\u0119ksz \u017Cycie o 50"
-  Costs: 010000000100000003000000
+  - Projectile Weapons Damage +10%
+  - Projectile Weapons Damage +20%
+  Costs: 6400000064000000
   Values:
+  - 10
   - 20
-  - 30
-  - 50
-  Icon: {fileID: 21300000, guid: 9a53ccdcea8c77f429769a49c5d03e55, type: 3}
+  Icon: {fileID: 21300000, guid: 767bbfbf2098fe549a189b8bc7ceb3cd, type: 3}
   UnlockWhenParentMaxed: 0
-  UnlockAtParentLevel: 1
-  ParentUpgrade: {fileID: 11400000, guid: 4050223244a53634087aa699a9e9420a, type: 2}
+  UnlockAtParentLevel: 5
+  ParentUpgrade: {fileID: 11400000, guid: 0cd0cf76d46e74542b14221a847b7e6f, type: 2}
   statType: 0

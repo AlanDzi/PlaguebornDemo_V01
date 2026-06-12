@@ -45,5 +45,10 @@ namespace HolenderGames.UpgradesTree
         }
 
 
+        public void SetCurrency(int amount)
+        {
+            currency = amount;
+            CurrencyChanged?.Invoke(currency);
+        }
     }
 }

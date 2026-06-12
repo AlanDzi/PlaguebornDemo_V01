@@ -9,8 +9,9 @@ public static class SaveSystem
     private const string MAX_HEALTH_KEY = "PlayerMaxHealth";
     private const string INFECTION_KEY = "PlayerInfection";
     private const string DAMAGE_KEY = "PlayerDamage";
+    private const string CURRENCY_KEY = "PlayerCurrency";
+    private const string GOLD_KEY = "PlayerGold";
 
-   
 
     private const string FIRST_LEVEL_KEY = "FirstLevel";
 
@@ -30,7 +31,28 @@ public static class SaveSystem
             PlayerPrefs.SetInt(DAMAGE_KEY, playerStats.currentDamage);
         }
 
-        
+        HolenderGames.UpgradesTree.CurrencyManager currencyManager =
+    Object.FindFirstObjectByType<
+        HolenderGames.UpgradesTree.CurrencyManager>();
+
+        if (currencyManager != null)
+        {
+            PlayerPrefs.SetInt(
+                CURRENCY_KEY,
+                currencyManager.Currency
+            );
+        }
+
+        GoldManager goldManager =
+    Object.FindFirstObjectByType<GoldManager>();
+
+        if (goldManager != null)
+        {
+            PlayerPrefs.SetInt(
+                GOLD_KEY,
+                goldManager.Gold
+            );
+        }
 
         PlayerPrefs.SetInt(FIRST_LEVEL_KEY, 0);
         PlayerPrefs.Save();
@@ -58,7 +80,33 @@ public static class SaveSystem
             playerStats.currentInfection = PlayerPrefs.GetInt(INFECTION_KEY, 0);
             playerStats.currentDamage = PlayerPrefs.GetInt(DAMAGE_KEY, 20);
         }
+       
+        HolenderGames.UpgradesTree.CurrencyManager currencyManager =
+    Object.FindFirstObjectByType<
+        HolenderGames.UpgradesTree.CurrencyManager>();
 
+        if (currencyManager != null)
+        {
+            currencyManager.SetCurrency(
+                PlayerPrefs.GetInt(
+                    CURRENCY_KEY,
+                    0
+                )
+            );
+        }
+
+        GoldManager goldManager =
+    Object.FindFirstObjectByType<GoldManager>();
+
+        if (goldManager != null)
+        {
+            goldManager.SetGold(
+                PlayerPrefs.GetInt(
+                    GOLD_KEY,
+                    0
+                )
+            );
+        }
     }
 
     public static void ResetData()
@@ -70,7 +118,10 @@ public static class SaveSystem
         PlayerPrefs.DeleteKey(MAX_HEALTH_KEY);
         PlayerPrefs.DeleteKey(INFECTION_KEY);
         PlayerPrefs.DeleteKey(DAMAGE_KEY);
-       
+
+        PlayerPrefs.DeleteKey(CURRENCY_KEY);
+        PlayerPrefs.DeleteKey(GOLD_KEY);
+
         PlayerPrefs.SetInt(FIRST_LEVEL_KEY, 1);
         PlayerPrefs.Save();
     }

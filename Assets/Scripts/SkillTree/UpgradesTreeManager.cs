@@ -20,7 +20,9 @@ namespace HolenderGames.UpgradesTree
             foreach (UpgradeView upgrade in upgrades)
             {
                 upgrade.OnBuyUpgrade += OnBuyUpgrade;
+
                 upgrade.Data.ResetUpgrade();
+
                 upgrade.UpdateUI();
             }
         }

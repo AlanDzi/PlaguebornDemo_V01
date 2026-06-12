@@ -10,20 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f896120182dd854896c2ab7adbc9c27, type: 3}
-  m_Name: Speed
+  m_Name: DamageUP
   m_EditorClassIdentifier: 
-  UpgradeName: Zwinne nogi
+  UpgradeName: Wola Walki
   Descriptions:
-  - Biegaj szybciej o 5%
-  - Biegaj szybciej o 10%
-  - Biegaj szybciej o 20%
-  Costs: 010000000100000002000000
+  - "Zwi\u0119ksz obra\u017Cenia o 5"
+  - "Zwi\u0119ksz obra\u017Cenia o 10"
+  Costs: 0100000002000000
   Values:
-  - 0.05
-  - 0.1
-  - 0.2
-  Icon: {fileID: 21300000, guid: 868fe8c5189e8034d90c61a8996330e4, type: 3}
+  - 5
+  - 10
+  Icon: {fileID: 21300000, guid: c90b2e4347bba2c42b68f8f8809e998b, type: 3}
   UnlockWhenParentMaxed: 1
   UnlockAtParentLevel: 1
-  ParentUpgrade: {fileID: 11400000, guid: 4050223244a53634087aa699a9e9420a, type: 2}
-  statType: 3
+  ParentUpgrade: {fileID: 0}
+  statType: 1

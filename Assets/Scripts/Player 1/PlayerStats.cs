@@ -59,6 +59,8 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
+        SaveSystem.ResetData();
+
         audioSource = GetComponent<AudioSource>();
 
         if (audioSource == null)

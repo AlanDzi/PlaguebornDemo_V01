@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4266506670663995606}
+  - component: {fileID: 3222399537362671986}
   m_Layer: 0
   m_Name: PauseMenager
   m_TagString: Untagged
@@ -31,3 +32,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3222399537362671986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6150384362773744523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953cdec3d2fa1dc4085fcd893d3c0520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pausePanel: {fileID: 3461967411005857827, guid: e44fdb18b138e5a4681d8f38203aa0fb, type: 3}
+  resumeButton: {fileID: 0}
+  settingsButton: {fileID: 0}
+  mainMenuButton: {fileID: 0}
+  settingsPanel: {fileID: 0}
+  backFromSettingsButton: {fileID: 0}
+  sensitivitySlider: {fileID: 0}
+  volumeSlider: {fileID: 0}
+  confirmPanel: {fileID: 0}
+  confirmText: {fileID: 0}
+  yesButton: {fileID: 0}
+  noButton: {fileID: 0}
+  buttonHoverSound: {fileID: 0}
+  buttonClickSound: {fileID: 8300000, guid: be95a63850319af46ace7a798c924279, type: 3}
+  infoPanel: {fileID: 0}
+  closeInfoButton: {fileID: 0}

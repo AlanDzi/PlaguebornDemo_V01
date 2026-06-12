@@ -188,6 +188,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void QuitGame()
     {
+        SaveSystem.SavePlayerData();
+
         Application.Quit();
 
 #if UNITY_EDITOR

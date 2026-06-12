@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2867420016496121979}
   - component: {fileID: 2752153268814149335}
-  - component: {fileID: 8995474591725444314}
   m_Layer: 0
   m_Name: InventoryManager
   m_TagString: Untagged
@@ -45,46 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb915bb95047bf4683b1b6f5ceb8364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  antidotes: 1
-  bandages: 1
-  maxItems: 3
-  coins: 0
-  maxCoins: 100
-  bandageHealAmount: 20
-  itemCooldown: 5
-  antidoteUseSound: {fileID: 8300000, guid: 45a08c34bafd5134c9c62e5d9ad5cd4b, type: 3}
-  bandageUseSound: {fileID: 8300000, guid: 44c1b5d4f3d3c3e4eaa75cd067592396, type: 3}
---- !u!114 &8995474591725444314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7177207912615998114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9fd693687fb0f4bb2437cb192b5000, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  antidoteIcon: {fileID: 0}
-  antidoteCount: {fileID: 0}
-  antidoteKey: {fileID: 0}
-  bandageIcon: {fileID: 0}
-  bandageCount: {fileID: 0}
-  bandageKey: {fileID: 0}
-  shopIcon: {fileID: 0}
-  shopKey: {fileID: 0}
-  coinIcon: {fileID: 0}
-  coinCount: {fileID: 0}
-  shopCanvas: {fileID: 0}
-  shopPanel: {fileID: 0}
-  shopOpenButton: {fileID: 0}
-  shopCloseButton: {fileID: 0}
-  buyAntidoteButton: {fileID: 0}
-  antidotePrice: {fileID: 0}
-  buyBandageButton: {fileID: 0}
-  bandagePrice: {fileID: 0}
-  antidoteCost: 60
-  bandageCost: 25
-  buttonHoverSound: {fileID: 0}
-  buttonClickSound: {fileID: 8300000, guid: be95a63850319af46ace7a798c924279, type: 3}
+  inventorySize: 24
+  inventorySlots: []
+  hotbarSlots:
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  - item: {fileID: 0}
+    amount: 0
+  equippedWeapon:
+    item: {fileID: 0}
+    amount: 0
+  useSound: {fileID: 0}
+  startingWeapon: {fileID: 11400000, guid: 0576d98cf300a864f9f75c67c827fbe9, type: 2}

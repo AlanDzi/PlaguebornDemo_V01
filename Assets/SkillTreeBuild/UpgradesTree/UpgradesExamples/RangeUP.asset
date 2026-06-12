@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f896120182dd854896c2ab7adbc9c27, type: 3}
-  m_Name: SharpEdge
+  m_Name: RangeUP
   m_EditorClassIdentifier: 
-  UpgradeName: Wola Walki
+  UpgradeName: "Sir D\u0142ugor\u0119ki"
   Descriptions:
-  - "Zwi\u0119ksz obra\u017Cenia o 5"
-  - "Zwi\u0119ksz obra\u017Cenia o 10"
-  Costs: 0100000002000000
+  - "Zwi\u0119ksz zasi\u0119g ataku o 0.5 "
+  - "Zwi\u0119ksz zasi\u0119g ataku o 0.5 "
+  - "Zwi\u0119ksz zasi\u0119g ataku o 1"
+  Costs: 010000000100000003000000
   Values:
-  - 5
-  - 10
-  Icon: {fileID: 21300000, guid: c90b2e4347bba2c42b68f8f8809e998b, type: 3}
+  - 0.5
+  - 0.5
+  - 1
+  Icon: {fileID: 21300000, guid: 1f7b13c1c243ca0468e11de00d32ec97, type: 3}
   UnlockWhenParentMaxed: 1
   UnlockAtParentLevel: 1
-  ParentUpgrade: {fileID: 0}
-  statType: 1
+  ParentUpgrade: {fileID: 11400000, guid: 4050223244a53634087aa699a9e9420a, type: 2}
+  statType: 6

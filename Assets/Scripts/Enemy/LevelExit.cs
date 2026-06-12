@@ -33,13 +33,11 @@ public class LevelExit :
 
     void LoadNextLevel()
     {
-        int currentIndex =
-            SceneManager
-                .GetActiveScene()
-                .buildIndex;
+        SaveSystem.SavePlayerData();
 
-        SceneManager.LoadScene(
-            currentIndex + 1
-        );
+        int currentIndex =
+            SceneManager.GetActiveScene().buildIndex;
+
+        SceneManager.LoadScene(currentIndex + 1);
     }
 }

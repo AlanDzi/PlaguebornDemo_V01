@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5790499976319092407}
   - component: {fileID: 1791077625105447702}
+  - component: {fileID: 592776204839506052}
   m_Layer: 0
   m_Name: GameMenager
   m_TagString: Untagged
@@ -49,5 +50,26 @@ MonoBehaviour:
   nextLevelButton: {fileID: 0}
   mainMenuButton: {fileID: 0}
   victorySound: {fileID: 8300000, guid: 79524319ece9d36468efd8df3ced9ef5, type: 3}
-  nextLevelScene: TestScene2
+  nextLevelScene: 
   mainMenuScene: MainMenuScene
+  disableVictory: 1
+--- !u!114 &592776204839506052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456234535359564483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae38bb9a256dc64496b80a71c70059c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLevel: 1
+  playerExperience: 0
+  playerExperienceToNext: 100
+  playerHealth: 100
+  playerMaxHealth: 100
+  playerInfection: 0
+  playerDamage: 20
+  isFirstLevel: 1

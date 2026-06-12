@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Plagueborn_--main.sln"
+    "dotnet.defaultSolution": "PlaguebornDemo_V01.sln"
 }

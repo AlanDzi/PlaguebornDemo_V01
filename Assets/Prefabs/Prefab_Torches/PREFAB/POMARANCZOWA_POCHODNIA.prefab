@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1006833119776119313
+--- !u!1 &9153115572708462090
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9142909487823925262}
-  - component: {fileID: 2383208912801781696}
-  - component: {fileID: 5622866852665490707}
-  - component: {fileID: 5443704813802886217}
+  - component: {fileID: 4641434339031044349}
+  - component: {fileID: 7981614606726424062}
+  - component: {fileID: 5360502771597036631}
+  - component: {fileID: 5990295755520053583}
   m_Layer: 0
-  m_Name: prop_wall_torch (1)
+  m_Name: POMARANCZOWA_POCHODNIA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9142909487823925262
+--- !u!4 &4641434339031044349
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1006833119776119313}
+  m_GameObject: {fileID: 9153115572708462090}
   serializedVersion: 2
   m_LocalRotation: {x: 0.47913632, y: 0.5049706, z: 0.4772248, w: -0.53636706}
-  m_LocalPosition: {x: 3.267, y: -5.581, z: 1.925}
-  m_LocalScale: {x: 2.54, y: 2.54, z: 2.54}
+  m_LocalPosition: {x: -8.017, y: 6.908, z: 3.713}
+  m_LocalScale: {x: 2.5400002, y: 2.54, z: 2.54}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 300649362724033852}
+  - {fileID: 4544257471957559729}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -84.845, y: -69.909, z: -18.18}
---- !u!33 &2383208912801781696
+--- !u!33 &7981614606726424062
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1006833119776119313}
+  m_GameObject: {fileID: 9153115572708462090}
   m_Mesh: {fileID: 5184921913950671244, guid: 4c887aa6d64592b4aa31238cca60507d, type: 3}
---- !u!23 &5622866852665490707
+--- !u!23 &5360502771597036631
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1006833119776119313}
+  m_GameObject: {fileID: 9153115572708462090}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -90,13 +90,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5443704813802886217
+--- !u!65 &5990295755520053583
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1006833119776119313}
+  m_GameObject: {fileID: 9153115572708462090}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -111,13 +111,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.08794677, y: 0.10665755, z: 0.25699124}
   m_Center: {x: -0.0000009536743, y: -0.00000023283064, z: 0.000000037252907}
---- !u!1001 &106812448674513913
+--- !u!1001 &4199347457961328500
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 9142909487823925262}
+    m_TransformParent: {fileID: 4641434339031044349}
     m_Modifications:
     - target: {fileID: 384888836603811525, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
       propertyPath: m_LocalPosition.x
@@ -129,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 384888836603811525, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1707
+      value: 0.172
       objectReference: {fileID: 0}
     - target: {fileID: 384888836603811525, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
       propertyPath: m_LocalRotation.w
@@ -159,17 +159,85 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -7.789
       objectReference: {fileID: 0}
+    - target: {fileID: 780431272949335981, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: m_Color.b
+      value: 0.50377357
+      objectReference: {fileID: 0}
+    - target: {fileID: 780431272949335981, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8685212
+      objectReference: {fileID: 0}
+    - target: {fileID: 780431272949335981, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 780431272949335981, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 780431272949335981, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446466751024165123, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: simulationSpeed
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446466751024165123, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446466751024165123, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime1
+      value: 38010
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446466751024165123, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446466751024165123, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.9566571
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446466751024165123, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446466751024165123, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.3965672
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446466751024165123, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5910208732575086669, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
       propertyPath: m_Name
       value: VFX_GreenTorchLight (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8613628813235405224, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.8692722
+      objectReference: {fileID: 0}
+    - target: {fileID: 8613628813235405224, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8613628813235405224, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.7900345
+      objectReference: {fileID: 0}
+    - target: {fileID: 8613628813235405224, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
---- !u!4 &300649362724033852 stripped
+--- !u!4 &4544257471957559729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 384888836603811525, guid: 212d28451a993b84fa92689dc55d0a88, type: 3}
-  m_PrefabInstance: {fileID: 106812448674513913}
+  m_PrefabInstance: {fileID: 4199347457961328500}
   m_PrefabAsset: {fileID: 0}

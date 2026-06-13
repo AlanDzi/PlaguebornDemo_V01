@@ -1,12 +1,24 @@
 using UnityEngine;
 
-public class DoorController : MonoBehaviour
+public class DoorController : MonoBehaviour, IInteractable
 {
+    [Header("Door")]
     public float openAngle = 90f;
     public float speed = 3f;
 
+    [Header("Lock")]
+    public bool requiresKey = false;
+    public ItemData requiredKey;
+    public bool consumeKey = true;
+
+    [Header("Teleport (Optional)")]
+    public Transform teleportTarget;
+
+    [Header("Prompt")]
+    public string openText = "E - Open door";
+    public string lockedText = "Key required";
+
     private bool isOpen = false;
-    private bool playerInside = false;
 
     private Quaternion closedRot;
     private Quaternion openRot;
@@ -19,16 +31,8 @@ public class DoorController : MonoBehaviour
 
     void Update()
     {
-        //  BLOKADA GDY UI OTWARTE
-        if (UIManager.Instance != null && UIManager.Instance.IsAnyUIOpen)
-            return;
-
-        if (playerInside && Input.GetKeyDown(KeyCode.E))
-        {
-            isOpen = !isOpen;
-        }
-
-        Quaternion target = isOpen ? openRot : closedRot;
+        Quaternion target =
+            isOpen ? openRot : closedRot;
 
         transform.localRotation = Quaternion.Lerp(
             transform.localRotation,
@@ -37,19 +41,93 @@ public class DoorController : MonoBehaviour
         );
     }
 
-    void OnTriggerEnter(Collider other)
+    public string GetPromptText()
     {
-        if (other.CompareTag("Player"))
+        if (requiresKey)
         {
-            playerInside = true;
+            if (!HasKey())
+                return lockedText;
+        }
+
+        return openText;
+    }
+
+    public void Interact()
+    {
+        if (UIManager.Instance != null &&
+            UIManager.Instance.IsAnyUIOpen)
+            return;
+
+        if (requiresKey)
+        {
+            if (!HasKey())
+                return;
+
+            if (consumeKey)
+            {
+                RemoveKey();
+            }
+
+            requiresKey = false;
+        }
+
+        isOpen = !isOpen;
+
+        if (teleportTarget != null)
+        {
+            GameObject player =
+                GameObject.FindGameObjectWithTag("Player");
+
+            if (player != null)
+            {
+                player.transform.position =
+                    teleportTarget.position;
+            }
         }
     }
 
-    void OnTriggerExit(Collider other)
+    bool HasKey()
     {
-        if (other.CompareTag("Player"))
+        InventoryManager inv =
+            InventoryManager.Instance;
+
+        if (inv == null)
+            return false;
+
+        foreach (InventorySlot slot in inv.inventorySlots)
         {
-            playerInside = false;
+            if (!slot.IsEmpty() &&
+                slot.item == requiredKey)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    void RemoveKey()
+    {
+        InventoryManager inv =
+            InventoryManager.Instance;
+
+        if (inv == null)
+            return;
+
+        for (int i = 0; i < inv.inventorySlots.Length; i++)
+        {
+            InventorySlot slot =
+                inv.inventorySlots[i];
+
+            if (!slot.IsEmpty() &&
+                slot.item == requiredKey)
+            {
+                slot.Clear();
+
+                inv.RefreshUI();
+
+                return;
+            }
         }
     }
 }

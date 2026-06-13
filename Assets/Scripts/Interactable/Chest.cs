@@ -7,22 +7,30 @@ public class Chest : MonoBehaviour, IInteractable
     public List<ChestItem> items = new List<ChestItem>();
 
     [Header("UI")]
-    public string promptText = "E - Otwórz skrzyniê";
+    public string promptText = "E - Open";
+
+    [Header("Boss Requirement")]
+    public GameObject requiredBoss;
 
     public string GetPromptText()
     {
+        if (requiredBoss != null)
+        {
+            return "Defeat the Boss!";
+        }
+
         return promptText;
     }
 
     public void Interact()
     {
-        if (UIManager.Instance == null)
+        if (requiredBoss != null)
             return;
 
-        if (UIManager.Instance.IsAnyUIOpen)
-            return;
-
-        UIManager.Instance.ShowChest(this);
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowChest(this);
+        }
     }
 
     public void TakeItem(ChestItem item)

@@ -19943,12 +19943,13 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 983396248096336920, guid: 98828c828fedb174fa8ba71c0209736e, type: 3}
     - {fileID: -7469978125338197276, guid: 98828c828fedb174fa8ba71c0209736e, type: 3}
+    - {fileID: -7291746013030848371, guid: 98828c828fedb174fa8ba71c0209736e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98828c828fedb174fa8ba71c0209736e, type: 3}
-      insertIndex: 268
+      insertIndex: 267
       addedObject: {fileID: 656483465}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98828c828fedb174fa8ba71c0209736e, type: 3}
-      insertIndex: 751
+      insertIndex: 750
       addedObject: {fileID: 1611092644}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -4854197981851705597, guid: 98828c828fedb174fa8ba71c0209736e, type: 3}
@@ -56108,6 +56109,7 @@ MonoBehaviour:
   requiredKey: {fileID: 0}
   consumeKey: 1
   teleportTarget: {fileID: 0}
+  bossToActivate: {fileID: 0}
   openText: "E - Otw\xF3rz drzwi"
   lockedText: Potrzebny klucz
 --- !u!1001 &424040165
@@ -68113,6 +68115,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3079520095186977806, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+      propertyPath: m_Name
+      value: BoosDoorLVL2
+      objectReference: {fileID: 0}
     - target: {fileID: 3118645025253124261, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -68148,6 +68154,42 @@ PrefabInstance:
     - target: {fileID: 3444948532948226103, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467561183924882336, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -83.962
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467561183924882336, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.40119362
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467561183924882336, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -24.764
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467561183924882336, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70697796
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467561183924882336, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.70697796
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467561183924882336, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.013499217
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467561183924882336, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.013499217
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467561183924882336, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3467561183924882336, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -2.188
       objectReference: {fileID: 0}
     - target: {fileID: 3597428174801141755, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -68634,10 +68676,11 @@ PrefabInstance:
       value: 2.9209993
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3079520095186977806, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
-      insertIndex: 119
+      insertIndex: 118
       addedObject: {fileID: 1656030464}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -1854539911871842311, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
@@ -68943,9 +68986,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -4112444172616859265, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 546079350}
-    - targetCorrespondingSourceObject: {fileID: 3079520095186977806, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2066260115}
     - targetCorrespondingSourceObject: {fileID: -7743368269957375327, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 368712564}
@@ -70855,11 +70895,6 @@ GameObject:
 --- !u!1 &508191609 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1662877755693203656, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
-  m_PrefabInstance: {fileID: 508191400}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &508191610 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3079520095186977806, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
   m_PrefabInstance: {fileID: 508191400}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &508191611 stripped
@@ -95953,6 +95988,7 @@ MonoBehaviour:
   requiredKey: {fileID: 0}
   consumeKey: 1
   teleportTarget: {fileID: 0}
+  bossToActivate: {fileID: 0}
   openText: E - Open door
   lockedText: Key required
 --- !u!65 &698786063
@@ -95994,6 +96030,7 @@ MonoBehaviour:
   requiredKey: {fileID: 11400000, guid: a0f777bbac34cb74590de157b601244c, type: 2}
   consumeKey: 1
   teleportTarget: {fileID: 1500055342}
+  bossToActivate: {fileID: 1762037770}
   openText: E - Open door
   lockedText: Key required
 --- !u!1 &699495662 stripped
@@ -103700,6 +103737,7 @@ MonoBehaviour:
   requiredKey: {fileID: 0}
   consumeKey: 1
   teleportTarget: {fileID: 0}
+  bossToActivate: {fileID: 0}
   openText: "E - Otw\xF3rz drzwi"
   lockedText: Potrzebny klucz
 --- !u!64 &752061421
@@ -105784,6 +105822,10 @@ PrefabInstance:
     - target: {fileID: 8776156726686495565, guid: 268d98a8c6f38a64ca385d158b213988, type: 3}
       propertyPath: m_Name
       value: '"Boss"'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8776156726686495565, guid: 268d98a8c6f38a64ca385d158b213988, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -143996,6 +144038,7 @@ MonoBehaviour:
   requiredKey: {fileID: 0}
   consumeKey: 1
   teleportTarget: {fileID: 0}
+  bossToActivate: {fileID: 0}
   openText: "E - Otw\xF3rz drzwi"
   lockedText: Potrzebny klucz
 --- !u!65 &909159129
@@ -154742,6 +154785,131 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45d32c84f1e5bfc4fa89bb82a0078cdd, type: 3}
+--- !u!1 &998980554
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 998980555}
+  - component: {fileID: 998980559}
+  - component: {fileID: 998980558}
+  - component: {fileID: 998980557}
+  - component: {fileID: 998980556}
+  m_Layer: 7
+  m_Name: BossLVL2Key
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &998980555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998980554}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5573262, y: -0.020518174, z: 0.008530348, w: 0.8299963}
+  m_LocalPosition: {x: -138.721, y: 0.88521576, z: -24.37472}
+  m_LocalScale: {x: 2.54, y: 2.539999, z: 2.539999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1358841425}
+  m_LocalEulerAnglesHint: {x: -67.639, y: -6.576, z: 5.586}
+--- !u!65 &998980556
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998980554}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.059457395, y: 0.09879671, z: 0.0043726787}
+  m_Center: {x: 0, y: 0, z: 0.0019685342}
+--- !u!114 &998980557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998980554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c3bdffe1f69c34fbc9227dec236533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: 468a4da5ff3d7f543b40f4e4aff67073, type: 2}
+  amount: 1
+  promptText: E - Pick Up
+--- !u!23 &998980558
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998980554}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -2961945320688909058, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+  - {fileID: -8863482124825134610, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &998980559
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998980554}
+  m_Mesh: {fileID: 7984352640231091814, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
 --- !u!1 &1001072017 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 41844271858684302, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
@@ -163497,6 +163665,136 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8250872315324000759, guid: 268d98a8c6f38a64ca385d158b213988, type: 3}
   m_PrefabInstance: {fileID: 1075719335}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1076192826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1076192827}
+  - component: {fileID: 1076192831}
+  - component: {fileID: 1076192830}
+  - component: {fileID: 1076192829}
+  - component: {fileID: 1076192828}
+  m_Layer: 0
+  m_Name: BoosDoorLVL2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1076192827
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076192826}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.50068355, y: 0.4993155, z: 0.4993155, w: 0.50068355}
+  m_LocalPosition: {x: -157.9416, y: 0.7259102, z: -18.584564}
+  m_LocalScale: {x: 2.54, y: 2.54, z: 2.54}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1212395417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1076192828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076192826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd7c65db68c9ce499bf14d1e2c653f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openAngle: 90
+  speed: 3
+  requiresKey: 1
+  requiredKey: {fileID: 11400000, guid: 468a4da5ff3d7f543b40f4e4aff67073, type: 2}
+  consumeKey: 1
+  teleportTarget: {fileID: 1968345034}
+  bossToActivate: {fileID: 1086092061}
+  openText: E - Open/Close
+  lockedText: Key required
+--- !u!65 &1076192829
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076192826}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.53436697, y: 0.07914801, z: 0.73766}
+  m_Center: {x: -0.25391352, y: -0.00067080546, z: 0.076634526}
+--- !u!23 &1076192830
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076192826}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 5941043610801130783, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1076192831
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076192826}
+  m_Mesh: {fileID: 5762585249952776915, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
 --- !u!1 &1077026985 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4309474828986014582, guid: 378f37243d86b5549b8402a247a6b2a6, type: 3}
@@ -164028,6 +164326,10 @@ PrefabInstance:
     - target: {fileID: 345686532195679202, guid: 0059b8aaa9add98459344f04c6025cf4, type: 3}
       propertyPath: m_Name
       value: GreenBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 345686532195679202, guid: 0059b8aaa9add98459344f04c6025cf4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 345686532195679202, guid: 0059b8aaa9add98459344f04c6025cf4, type: 3}
       propertyPath: m_TagString
@@ -179456,7 +179758,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1076192827}
   m_Father: {fileID: 1358841425}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1213062028
@@ -193767,9 +194070,11 @@ Transform:
   - {fileID: 881890589}
   - {fileID: 1742502544}
   - {fileID: 1212395417}
+  - {fileID: 998980555}
   - {fileID: 729333662}
   - {fileID: 196168249}
   - {fileID: 1415802882}
+  - {fileID: 1968345034}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1360461902 stripped
@@ -194006,6 +194311,7 @@ MonoBehaviour:
   requiredKey: {fileID: 0}
   consumeKey: 1
   teleportTarget: {fileID: 0}
+  bossToActivate: {fileID: 0}
   openText: "E - Otw\xF3rz drzwi"
   lockedText: Potrzebny klucz
 --- !u!65 &1362438783
@@ -196871,7 +197177,7 @@ GameObject:
   - component: {fileID: 1388736533}
   - component: {fileID: 1388736535}
   - component: {fileID: 1388736534}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MetalDoors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196931,10 +197237,11 @@ MonoBehaviour:
   speed: 3
   requiresKey: 0
   requiredKey: {fileID: 0}
-  consumeKey: 1
+  consumeKey: 0
   teleportTarget: {fileID: 0}
-  openText: "E - Otw\xF3rz drzwi"
-  lockedText: Potrzebny klucz
+  bossToActivate: {fileID: 0}
+  openText: E - Open/Close
+  lockedText: Key required
 --- !u!1 &1390277748 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6491836180424685381, guid: 98828c828fedb174fa8ba71c0209736e, type: 3}
@@ -233794,7 +234101,7 @@ GameObject:
   - component: {fileID: 1666059190}
   - component: {fileID: 1666059189}
   - component: {fileID: 1666059188}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: pref_door_bars (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252308,6 +252615,7 @@ MonoBehaviour:
   requiredKey: {fileID: 0}
   consumeKey: 1
   teleportTarget: {fileID: 0}
+  bossToActivate: {fileID: 0}
   openText: "E - Otw\xF3rz drzwi"
   lockedText: Potrzebny klucz
 --- !u!65 &1812315307
@@ -255855,7 +256163,7 @@ GameObject:
   - component: {fileID: 1869107328}
   - component: {fileID: 1869107327}
   - component: {fileID: 1869107326}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: pref_doors (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276310,6 +276618,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.27132127, y: 0.27132133, z: 0.22878125}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1968345033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1968345034}
+  m_Layer: 0
+  m_Name: BossTeleport2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1968345034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968345033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -159.064, y: 0.724, z: -18.142}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1358841425}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1970311352
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -290317,27 +290656,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.22067994, y: 1.1923418, z: 0.98710626}
   m_Center: {x: -0.014434788, y: -0.000060170903, z: 0.00000047683716}
---- !u!65 &2066260115
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508191610}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.53436697, y: 0.07914801, z: 0.73766}
-  m_Center: {x: -0.25391352, y: -0.00067080546, z: 0.076634526}
 --- !u!1 &2067167320
 GameObject:
   m_ObjectHideFlags: 0
@@ -299440,7 +299758,7 @@ GameObject:
   - component: {fileID: 2110227218}
   - component: {fileID: 2110227220}
   - component: {fileID: 2110227219}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299500,8 +299818,9 @@ MonoBehaviour:
   speed: 3
   requiresKey: 0
   requiredKey: {fileID: 0}
-  consumeKey: 1
+  consumeKey: 0
   teleportTarget: {fileID: 0}
+  bossToActivate: {fileID: 0}
   openText: E - Open door
   lockedText: Key required
 --- !u!1 &2111810497 stripped

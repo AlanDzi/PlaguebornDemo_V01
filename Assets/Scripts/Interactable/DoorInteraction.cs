@@ -14,8 +14,11 @@ public class DoorController : MonoBehaviour, IInteractable
     [Header("Teleport (Optional)")]
     public Transform teleportTarget;
 
+    [Header("Boss Spawn")]
+    public GameObject bossToActivate;
+
     [Header("Prompt")]
-    public string openText = "E - Open door";
+    public string openText = "E - Open/Close";
     public string lockedText = "Key required";
 
     private bool isOpen = false;
@@ -82,6 +85,10 @@ public class DoorController : MonoBehaviour, IInteractable
             {
                 player.transform.position =
                     teleportTarget.position;
+            }
+            if (bossToActivate != null)
+            {
+                bossToActivate.SetActive(true);
             }
         }
     }

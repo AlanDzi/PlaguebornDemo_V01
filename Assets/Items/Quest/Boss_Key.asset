@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f77c5d8df2b1d044a8597a9dee64bbc, type: 3}
   m_Name: Boss_Key
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Boss Key
   description: 
   icon: {fileID: 21300000, guid: 27557583e231dd946af2f8118251071b, type: 3}
   itemType: 4

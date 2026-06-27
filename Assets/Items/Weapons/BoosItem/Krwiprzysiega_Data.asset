@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae0e7eb1f30b7a43b5348feebb21f9a, type: 3}
+  m_Name: Krwiprzysiega_Data
+  m_EditorClassIdentifier: 
+  weaponName: Bloodsworn
+  baseDamage: 40
+  attackSpeed: 0.6
+  attackRange: 5
+  attackCooldown: 0.8
+  staminaCost: 18
+  critChance: 0.2
+  critMultiplier: 3
+  weaponPrefab: {fileID: 1689599651294013863, guid: afc5c0c4620066d4e81a39ac0c882642, type: 3}
+  swingRotation: {x: -70, y: 20, z: 0}
+  swingPositionOffset: {x: -0.15, y: -0.1, z: 0.25}
+  swingSpeed: 14
+  returnSpeed: 16
+  hitSound: {fileID: 8300000, guid: 41ae607924de7b04cafae155d16cd474, type: 3}
+  missSound: {fileID: 0}
+  swingSound: {fileID: 8300000, guid: a8a9e6520470094409bad9dbe7e8720f, type: 3}

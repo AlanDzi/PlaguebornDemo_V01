@@ -106,6 +106,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   experienceReward: 25
+  goldItem: {fileID: 0}
   moveSpeed: 2
   attackRange: 1
   detectionRange: 3

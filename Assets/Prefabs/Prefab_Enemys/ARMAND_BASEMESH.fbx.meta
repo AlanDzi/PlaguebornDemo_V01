@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 8498fd18602ee04489aae6babbfa805c
+guid: efdf70285dbd33842a1f256a08f35a2c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: krwioprzysiega001Mat
-    second: {fileID: 2100000, guid: 1f198ce0bea6b8d4c98baad748bc6f31, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

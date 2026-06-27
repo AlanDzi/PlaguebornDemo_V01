@@ -15,13 +15,17 @@ public class PlayerInteract : MonoBehaviour
 
     void Update()
     {
-        // NIE INTERAKTUJ GDY UI OTWARTE
-        if (UIManager.Instance != null && UIManager.Instance.IsAnyUIOpen)
+        // tymczasowo wy³¹cz blokadê UI
+
+        if (UIManager.Instance == null)
+        {
+            Debug.LogError("UIManager == NULL");
             return;
+        }
+
 
         CheckInteractable();
 
-        // BLOKADA NA 0.2s PO ZAMKNIÊCIU UI
         if (current != null &&
             Input.GetKeyDown(KeyCode.E) &&
             UIManager.Instance != null &&
@@ -38,7 +42,7 @@ public class PlayerInteract : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, interactDistance, interactableLayer))
         {
-            var interactable = hit.collider.GetComponent<IInteractable>();
+            var interactable = hit.collider.GetComponentInParent<IInteractable>();
 
             if (interactable != null)
             {
@@ -51,6 +55,8 @@ public class PlayerInteract : MonoBehaviour
                     );
 
                 return;
+
+
             }
         }
 

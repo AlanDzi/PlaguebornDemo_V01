@@ -234,11 +234,29 @@ public class UIManager : MonoBehaviour
 #endif
     }
 
-    
+
 
     public void ShowInteractionPrompt(bool show, string text = "")
     {
-        if (IsAnyUIOpen) return;
+        Debug.Log($"ShowInteractionPrompt | show={show} text={text}");
+
+        if (IsAnyUIOpen)
+        {
+            Debug.Log("Blocked because IsAnyUIOpen == TRUE");
+            return;
+        }
+
+        if (interactionPrompt == null)
+        {
+            Debug.LogError("interactionPrompt NULL");
+            return;
+        }
+
+        if (interactionPromptText == null)
+        {
+            Debug.LogError("interactionPromptText NULL");
+            return;
+        }
 
         interactionPrompt.SetActive(show);
 
@@ -246,7 +264,7 @@ public class UIManager : MonoBehaviour
             interactionPromptText.text = text;
     }
 
-    
+
 
     void LockPlayer(bool lockPlayer)
     {

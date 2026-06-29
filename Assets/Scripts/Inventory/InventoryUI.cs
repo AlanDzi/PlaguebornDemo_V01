@@ -20,6 +20,7 @@ public class InventoryUI : MonoBehaviour
     private InventoryManager inventory;
 
     private bool isOpen = false;
+    public bool IsOpen => isOpen;
 
     void Start()
     {
@@ -36,13 +37,30 @@ public class InventoryUI : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (!Input.GetKeyDown(KeyCode.Tab))
+            return;
+
+        // mo¿na zawsze zamkn¹æ inventory
+        if (isOpen)
         {
-            if (isOpen)
-                CloseInventory();
-            else
-                OpenInventory();
+            CloseInventory();
+            return;
         }
+
+        // nie otwieraj jeœli jest otwarte inne UI
+        if (UIManager.Instance != null &&
+            UIManager.Instance.IsAnyUIOpen)
+        {
+            return;
+        }
+
+        // nie otwieraj podczas pauzy
+        if (PauseManager.IsPausedStatic)
+        {
+            return;
+        }
+
+        OpenInventory();
     }
 
     // ================= OPEN / CLOSE =================
@@ -85,6 +103,12 @@ public class InventoryUI : MonoBehaviour
         if (UIManager.Instance != null)
         {
             UIManager.Instance.SetInventoryState(false);
+
+        }
+
+        if (ItemTooltipUI.Instance != null)
+        {
+            ItemTooltipUI.Instance.Hide();
         }
     }
 

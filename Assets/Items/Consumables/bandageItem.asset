@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bandageItem
   m_EditorClassIdentifier: 
   itemName: Bandage
-  description: 
+  description: Heals 30 HP
   icon: {fileID: 21300000, guid: 40c9ccbf62725784c923423bef84da55, type: 3}
   itemType: 1
   stackable: 1
@@ -21,5 +21,4 @@ MonoBehaviour:
   worldPrefab: {fileID: 0}
   healAmount: 30
   infectionReduce: 0
-  weaponPrefab: {fileID: 0}
-  weaponDamage: 0
+  weaponData: {fileID: 0}

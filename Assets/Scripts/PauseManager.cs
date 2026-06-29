@@ -38,6 +38,7 @@ public class PauseManager : MonoBehaviour
     private WeaponController weaponController;
 
     public static bool IsPausedStatic;
+    private InventoryUI inventoryUI;
 
     void Start()
     {
@@ -57,6 +58,9 @@ public class PauseManager : MonoBehaviour
 
         if (infoPanel != null)
             infoPanel.SetActive(false);
+
+
+        inventoryUI = FindFirstObjectByType<InventoryUI>();
     }
 
     void Update()
@@ -77,6 +81,14 @@ public class PauseManager : MonoBehaviour
             }
             else
             {
+                if (UIManager.Instance != null &&
+                    UIManager.Instance.IsAnyUIOpen)
+                    return;
+                if (inventoryUI != null &&
+                    inventoryUI.IsOpen)
+                {
+                    return;
+                }
                 PauseGame();
             }
         }

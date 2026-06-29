@@ -24,4 +24,6 @@ public class ItemData : ScriptableObject
 
     [Header("Weapon")]
     public WeaponData weaponData;
+
+   
 }

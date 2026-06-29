@@ -4,12 +4,15 @@ using TMPro;
 using UnityEngine.EventSystems;
 
 public class InventorySlotUI :
+   
     MonoBehaviour,
     IBeginDragHandler,
     IDragHandler,
     IEndDragHandler,
     IDropHandler,
-    IPointerClickHandler
+    IPointerClickHandler,
+    IPointerEnterHandler,
+    IPointerExitHandler
 {
     [Header("UI")]
     public Image icon;
@@ -114,5 +117,33 @@ public class InventorySlotUI :
     void Start()
     {
         selectionBorder.enabled = false;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log("ENTER SLOT");
+
+        if (currentSlot == null || currentSlot.IsEmpty())
+            return;
+
+        Debug.Log("ITEM: " + currentSlot.item.itemName);
+
+        if (ItemTooltipUI.Instance == null)
+        {
+            Debug.LogError("Tooltip Instance NULL");
+            return;
+        }
+
+        Debug.Log("SHOW TOOLTIP");
+
+        ItemTooltipUI.Instance.Show(currentSlot.item);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (ItemTooltipUI.Instance != null)
+        {
+            ItemTooltipUI.Instance.Hide();
+        }
     }
 }

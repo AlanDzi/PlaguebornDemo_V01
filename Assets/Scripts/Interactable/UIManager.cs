@@ -238,23 +238,23 @@ public class UIManager : MonoBehaviour
 
     public void ShowInteractionPrompt(bool show, string text = "")
     {
-        Debug.Log($"ShowInteractionPrompt | show={show} text={text}");
+        
 
         if (IsAnyUIOpen)
         {
-            Debug.Log("Blocked because IsAnyUIOpen == TRUE");
+          
             return;
         }
 
         if (interactionPrompt == null)
         {
-            Debug.LogError("interactionPrompt NULL");
+            
             return;
         }
 
         if (interactionPromptText == null)
         {
-            Debug.LogError("interactionPromptText NULL");
+            
             return;
         }
 

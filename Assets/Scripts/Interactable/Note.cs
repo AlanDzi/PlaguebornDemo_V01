@@ -7,7 +7,7 @@ public class Note : MonoBehaviour, IInteractable
 
     public string GetPromptText()
     {
-        return "E - czytaj";
+        return "E - Read";
     }
 
     public void Interact()

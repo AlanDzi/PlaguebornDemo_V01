@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f77c5d8df2b1d044a8597a9dee64bbc, type: 3}
+  m_Name: MagicallStaff
+  m_EditorClassIdentifier: 
+  itemName: Magical Staff
+  description: Only thing which can destroy the monolith
+  icon: {fileID: 21300000, guid: ac7fc9f682b6e12418dc415417917bcf, type: 3}
+  itemType: 4
+  stackable: 0
+  maxStack: 1
+  worldPrefab: {fileID: 0}
+  healAmount: 0
+  infectionReduce: 0
+  weaponData: {fileID: 0}

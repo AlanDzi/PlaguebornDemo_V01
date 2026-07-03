@@ -129,6 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c3bdffe1f69c34fbc9227dec236533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
+  itemData: {fileID: 11400000, guid: 7c68f2d1890be1a439959fa039fd9e6e, type: 2}
   amount: 1
   promptText: E - Pick Up

@@ -136,7 +136,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 5
-  m_PreviewTimeScale: 0
+  m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -266,6 +266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4ebd2c64fb755429662e63211328fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
-  infectionAmount: 10
-  lifeTime: 5
+  damage: 8
+  infectionAmount: 4
+  lifeTime: 4

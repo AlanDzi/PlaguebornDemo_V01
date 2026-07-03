@@ -14,6 +14,17 @@ public class DoorController : MonoBehaviour, IInteractable
     [Header("Teleport (Optional)")]
     public Transform teleportTarget;
 
+    [Header("Comic (Optional)")]
+    public Sprite comicPanel;
+
+    [Header("Settings")]
+    public bool canUseOnlyOnce = true;
+
+    private bool wasUsed = false;
+
+    [TextArea]
+    public string comicText;
+
     [Header("Boss Spawn")]
     public GameObject bossToActivate;
 
@@ -46,17 +57,21 @@ public class DoorController : MonoBehaviour, IInteractable
 
     public string GetPromptText()
     {
-        if (requiresKey)
-        {
-            if (!HasKey())
-                return lockedText;
-        }
+        if (canUseOnlyOnce && wasUsed)
+            return "";
+
+        if (requiresKey && !HasKey())
+            return lockedText;
 
         return openText;
     }
 
     public void Interact()
     {
+
+        if (canUseOnlyOnce && wasUsed)
+            return;
+
         if (UIManager.Instance != null &&
             UIManager.Instance.IsAnyUIOpen)
             return;
@@ -86,9 +101,23 @@ public class DoorController : MonoBehaviour, IInteractable
                 player.transform.position =
                     teleportTarget.position;
             }
-            if (bossToActivate != null)
+
+            if (comicPanel != null &&
+    ComicPanelUI.Instance != null)
             {
-                bossToActivate.SetActive(true);
+                ComicPanelUI.Instance.Show(
+                    comicPanel,
+                    comicText,
+                    () =>
+                    {
+                        if (bossToActivate != null)
+                            bossToActivate.SetActive(true);
+                    });
+            }
+            else
+            {
+                if (bossToActivate != null)
+                    bossToActivate.SetActive(true);
             }
         }
     }

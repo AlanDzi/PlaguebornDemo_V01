@@ -42,11 +42,22 @@ public class Enemy : MonoBehaviour
     public float projectileForce = 15f;
     public float shootingRange = 12f;
 
+    [Header("Burst Fire")]
+    public bool burstFire = false;
+    public int burstCount = 6;
+    public float burstDelay = 0.08f;
+
     [Header("Audio")]
     public AudioClip attackSound;
     public AudioClip deathSound;
     public AudioClip detectMeleeSound;
     public AudioClip detectRangerSound;
+
+    [Header("Boss Ending (Optional)")]
+    public bool isBoss = false;
+    public Sprite bossEndingComic;
+    [TextArea]
+    public string bossEndingText;
 
     private AudioSource audioSource;
     private Animator animator;
@@ -259,9 +270,17 @@ public class Enemy : MonoBehaviour
 
         if (animator != null)
             animator.SetTrigger("Shoot");
-
-        Invoke(nameof(FireProjectile), 0.3f);
-        Invoke(nameof(EndAttack), 1f);
+        
+        if (burstFire)
+        {
+            StartCoroutine(FireBurst());
+            Invoke(nameof(EndAttack), 0.3f + burstCount * burstDelay);
+        }
+        else
+        {
+            Invoke(nameof(FireProjectile), 0.3f);
+            Invoke(nameof(EndAttack), 1f);
+        }
     }
 
     void FireProjectile()
@@ -283,6 +302,18 @@ public class Enemy : MonoBehaviour
                 shootPoint.forward * projectileForce,
                 ForceMode.Impulse
             );
+        }
+    }
+
+    System.Collections.IEnumerator FireBurst()
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        for (int i = 0; i < burstCount; i++)
+        {
+            FireProjectile();
+
+            yield return new WaitForSeconds(burstDelay);
         }
     }
 
@@ -403,6 +434,15 @@ public class Enemy : MonoBehaviour
             navAgent.enabled = false;
 
         playerStats.AddExperience(experienceReward);
+        if (isBoss &&
+    ComicPanelUI.Instance != null &&
+    bossEndingComic != null)
+        {
+            ComicPanelUI.Instance.Show(
+                bossEndingComic,
+                bossEndingText
+            );
+        }
 
         if (goldItem != null)
         {

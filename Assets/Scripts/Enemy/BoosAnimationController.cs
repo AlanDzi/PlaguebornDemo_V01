@@ -32,11 +32,13 @@ public class BossAnimationController : MonoBehaviour
 
         if (randomPick == 0)
         {
+            Debug.Log("Boss is punching!");
             animator.SetTrigger("Punch"); 
         }
         else
         {
-            animator.SetTrigger("Swipe"); 
+            Debug.Log("Boss is swiping!");
+            animator.SetTrigger("Swipe");
         }
     }
 }

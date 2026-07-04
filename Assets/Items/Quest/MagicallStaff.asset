@@ -18,7 +18,7 @@ MonoBehaviour:
   itemType: 4
   stackable: 0
   maxStack: 1
-  worldPrefab: {fileID: 0}
+  worldPrefab: {fileID: 8397440948094806268, guid: fa6044bb08c81ec4094b45bad04c9080, type: 3}
   healAmount: 0
   infectionReduce: 0
   weaponData: {fileID: 0}

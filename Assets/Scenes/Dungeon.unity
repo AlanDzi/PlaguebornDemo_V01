@@ -34991,9 +34991,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1765731275635335037, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765731275635335037, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -129
+      objectReference: {fileID: 0}
+    - target: {fileID: 2287799228393656297, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -150
+      objectReference: {fileID: 0}
     - target: {fileID: 2653536098070588997, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
       propertyPath: m_Name
       value: 'Canvas '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206578064692305000, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 3756540337510873908, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
       propertyPath: playerCamera
@@ -35014,6 +35030,10 @@ PrefabInstance:
     - target: {fileID: 3994676099144312895, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117103296189773182, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 4258165680878980056, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -35103,9 +35123,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4792334598414383341, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.097187
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792334598414383341, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -83
+      objectReference: {fileID: 0}
     - target: {fileID: 4827785030850965269, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156631992338060973, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -834
       objectReference: {fileID: 0}
     - target: {fileID: 6977794821976501878, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -35114,6 +35146,10 @@ PrefabInstance:
     - target: {fileID: 7430324654986674975, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674893878567515133, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 239.3
       objectReference: {fileID: 0}
     - target: {fileID: 7869625050320421024, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -35159,6 +35195,9 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 7279199010927668777, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4536166640780909352, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1658425654}
     - targetCorrespondingSourceObject: {fileID: 2836597047732884374, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2011842715}
@@ -52574,6 +52613,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.378716, y: 0.37871608, z: 0.9930362}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!224 &336451741 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4536166640780909352, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
+  m_PrefabInstance: {fileID: 211251438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &336577663 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1422280162954331350, guid: 6b90ab086c1923a419772c48730fc069, type: 3}
@@ -54882,9 +54926,9 @@ RectTransform:
   - {fileID: 1836519653}
   m_Father: {fileID: 1658425654}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 540}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &380735588
@@ -58357,6 +58401,8 @@ MonoBehaviour:
   consumeKey: 0
   teleportTarget: {fileID: 0}
   comicPanel: {fileID: 0}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
@@ -67987,6 +68033,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6934944527996722225, guid: a3c0b7bab4d1b57448813442b5f90a67, type: 3}
   m_PrefabInstance: {fileID: 2906408847880320876}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &466931166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466931159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4f982cfd40481429d48b11567292d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loot:
+  - item: {fileID: 11400000, guid: 5c0f707ce8c73b64eb419f5e231c1efc, type: 2}
+    dropChance: 100
+    minAmount: 1
+    maxAmount: 1
 --- !u!65 &467070232
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -84955,6 +85018,8 @@ MonoBehaviour:
   consumeKey: 1
   teleportTarget: {fileID: 1462692052}
   comicPanel: {fileID: 0}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 1086092061}
@@ -87917,6 +87982,8 @@ MonoBehaviour:
   consumeKey: 1
   teleportTarget: {fileID: 0}
   comicPanel: {fileID: 0}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
@@ -103290,6 +103357,8 @@ MonoBehaviour:
   consumeKey: 1
   teleportTarget: {fileID: 0}
   comicPanel: {fileID: 0}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
@@ -103335,6 +103404,8 @@ MonoBehaviour:
   consumeKey: 1
   teleportTarget: {fileID: 1500055342}
   comicPanel: {fileID: 21300000, guid: 27265a7dffac6854ca8cc0d58a21f78b, type: 3}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 1796863275}
@@ -111466,6 +111537,8 @@ MonoBehaviour:
   consumeKey: 0
   teleportTarget: {fileID: 0}
   comicPanel: {fileID: 0}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
@@ -152674,6 +152747,8 @@ MonoBehaviour:
   consumeKey: 1
   teleportTarget: {fileID: 0}
   comicPanel: {fileID: 0}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
@@ -171311,6 +171386,8 @@ MonoBehaviour:
   consumeKey: 0
   teleportTarget: {fileID: 0}
   comicPanel: {fileID: 0}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
@@ -172237,6 +172314,8 @@ MonoBehaviour:
   consumeKey: 1
   teleportTarget: {fileID: 0}
   comicPanel: {fileID: 0}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
@@ -173703,6 +173782,8 @@ MonoBehaviour:
   consumeKey: 1
   teleportTarget: {fileID: 1968345034}
   comicPanel: {fileID: 0}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 1086092061}
@@ -205889,6 +205970,8 @@ MonoBehaviour:
   consumeKey: 1
   teleportTarget: {fileID: 0}
   comicPanel: {fileID: 0}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
@@ -209031,6 +209114,8 @@ MonoBehaviour:
   consumeKey: 0
   teleportTarget: {fileID: 0}
   comicPanel: {fileID: 0}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
@@ -209862,7 +209947,7 @@ GameObject:
   - component: {fileID: 1408040509}
   - component: {fileID: 1408040508}
   - component: {fileID: 1408040511}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: doors_lvl007 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209977,6 +210062,8 @@ MonoBehaviour:
   consumeKey: 0
   teleportTarget: {fileID: 1123656763}
   comicPanel: {fileID: 21300000, guid: 4e573866262d6c749b3ff575ab39639c, type: 3}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 466931159}
@@ -247640,11 +247727,11 @@ RectTransform:
   m_GameObject: {fileID: 1658425650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.15, y: 0.86999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 380735587}
-  m_Father: {fileID: 1093581372}
+  m_Father: {fileID: 336451741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -267387,6 +267474,8 @@ MonoBehaviour:
   consumeKey: 1
   teleportTarget: {fileID: 0}
   comicPanel: {fileID: 0}
+  returnToMainMenu: 0
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
@@ -281626,16 +281715,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openAngle: 0
   speed: 0
-  requiresKey: 0
-  requiredKey: {fileID: 0}
+  requiresKey: 1
+  requiredKey: {fileID: 11400000, guid: 5c0f707ce8c73b64eb419f5e231c1efc, type: 2}
   consumeKey: 1
   teleportTarget: {fileID: 0}
   comicPanel: {fileID: 21300000, guid: 09704fa360c35854096f7cf2dcc32784, type: 3}
+  returnToMainMenu: 1
+  mainMenuScene: MainMenuScene
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
   openText: E - Destroy Monolith
-  lockedText: Take the magical staff
+  lockedText: Defeat Armand Krell
 --- !u!65 &1882899666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -322955,7 +323046,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7743394075649820299, guid: a3c0b7bab4d1b57448813442b5f90a67, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 466931166}
   m_SourcePrefab: {fileID: 100100000, guid: a3c0b7bab4d1b57448813442b5f90a67, type: 3}
 --- !u!1001 &4174843147917774440
 PrefabInstance:
@@ -323347,9 +323441,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8099209611491633482, guid: 9e3fc1afadfd8544f85f126802a2c0b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1889002430}
-    - targetCorrespondingSourceObject: {fileID: 8099209611491633482, guid: 9e3fc1afadfd8544f85f126802a2c0b9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1658425654}
     - targetCorrespondingSourceObject: {fileID: 4561911850483054970, guid: 9e3fc1afadfd8544f85f126802a2c0b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 596976811}

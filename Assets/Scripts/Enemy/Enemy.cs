@@ -434,6 +434,13 @@ public class Enemy : MonoBehaviour
             navAgent.enabled = false;
 
         playerStats.AddExperience(experienceReward);
+        EnemyLoot loot = GetComponent<EnemyLoot>();
+
+        if (loot != null)
+        {
+            loot.DropLoot();
+        }
+
         if (isBoss &&
     ComicPanelUI.Instance != null &&
     bossEndingComic != null)

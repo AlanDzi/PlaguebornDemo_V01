@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class DoorController : MonoBehaviour, IInteractable
 {
     [Header("Door")]
@@ -16,6 +16,10 @@ public class DoorController : MonoBehaviour, IInteractable
 
     [Header("Comic (Optional)")]
     public Sprite comicPanel;
+
+    [Header("End Game (Optional)")]
+    public bool returnToMainMenu = false;
+    public string mainMenuScene = "MainMenuScene";
 
     [Header("Settings")]
     public bool canUseOnlyOnce = true;
@@ -91,36 +95,45 @@ public class DoorController : MonoBehaviour, IInteractable
 
         isOpen = !isOpen;
 
+        // Teleport (opcjonalny)
         if (teleportTarget != null)
         {
-            GameObject player =
-                GameObject.FindGameObjectWithTag("Player");
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
 
             if (player != null)
             {
-                player.transform.position =
-                    teleportTarget.position;
-            }
-
-            if (comicPanel != null &&
-    ComicPanelUI.Instance != null)
-            {
-                ComicPanelUI.Instance.Show(
-                    comicPanel,
-                    comicText,
-                    () =>
-                    {
-                        if (bossToActivate != null)
-                            bossToActivate.SetActive(true);
-                    });
-            }
-            else
-            {
-                if (bossToActivate != null)
-                    bossToActivate.SetActive(true);
+                player.transform.position = teleportTarget.position;
             }
         }
+
+        // Co ma siê wydarzyæ po komiksie
+        System.Action afterComic = () =>
+        {
+            if (bossToActivate != null)
+                bossToActivate.SetActive(true);
+
+            if (returnToMainMenu)
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(mainMenuScene);
+            }
+        };
+
+        // Komiks (opcjonalny)
+        if (comicPanel != null && ComicPanelUI.Instance != null)
+        {
+            ComicPanelUI.Instance.Show(
+                comicPanel,
+                comicText,
+                afterComic
+            );
+        }
+        else
+        {
+            afterComic?.Invoke();
+        }
     }
+    
 
     bool HasKey()
     {

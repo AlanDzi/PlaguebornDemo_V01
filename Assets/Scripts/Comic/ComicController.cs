@@ -2,12 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
-
+using TMPro;
 public class ComicController : MonoBehaviour
 {
     [Header("UI")]
     public Image comicImage;
     public Image fadePanel;
+    public TextMeshProUGUI continueText;
 
     [Header("Panels")]
     public Sprite[] panels;
@@ -22,6 +23,8 @@ public class ComicController : MonoBehaviour
 
     [Header("Fade")]
     public float fadeTime = 0.4f;
+
+    
 
     private int index = 0;
     private bool isTransitioning = false;
@@ -49,10 +52,21 @@ public class ComicController : MonoBehaviour
 
         SetAlpha(fadePanel, 1);
         StartCoroutine(FadeIn());
+
+        if (continueText != null)
+            continueText.gameObject.SetActive(true);
     }
 
     void Update()
     {
+
+        if (continueText != null)
+        {
+            Color c = continueText.color;
+            c.a = Mathf.PingPong(Time.time * 2f, 1f);
+            continueText.color = c;
+        }
+
         if (isTransitioning) return;
 
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
@@ -68,6 +82,9 @@ public class ComicController : MonoBehaviour
 
     IEnumerator NextPanel()
     {
+        if (continueText != null)
+            continueText.gameObject.SetActive(false);
+
         isTransitioning = true;
 
         yield return FadeOut();
@@ -146,6 +163,9 @@ public class ComicController : MonoBehaviour
         }
 
         SetAlpha(fadePanel, 0);
+
+        if (continueText != null && index < panels.Length)
+            continueText.gameObject.SetActive(true);
     }
 
     void SetAlpha(Image img, float a)

@@ -150,7 +150,7 @@ public class MainMenuManager : MonoBehaviour
     public void ShowQuitConfirmation()
     {
         confirmPanel.SetActive(true);
-        confirmText.text = "Czy na pewno chcesz wyjść?";
+        confirmText.text = "Are you sure you want to quit?";
     }
 
     public void StartGame()

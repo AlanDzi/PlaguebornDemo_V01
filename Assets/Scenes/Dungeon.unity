@@ -35155,6 +35155,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8444374645424865622, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8818520509859660869, guid: 9e250f731cff4c84a9a08b898b66138d, type: 3}
       propertyPath: currencyManager
       value: 
@@ -58406,8 +58410,8 @@ MonoBehaviour:
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
-  openText: "E - Otw\xF3rz drzwi"
-  lockedText: Potrzebny klucz
+  openText: E - Open door
+  lockedText: Rusty Key Required
 --- !u!1001 &424040165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111542,7 +111546,7 @@ MonoBehaviour:
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
-  openText: E - Open with Rusty Key
+  openText: 'E - Open '
   lockedText: Rusty Key Required
 --- !u!1001 &751141072
 PrefabInstance:
@@ -172319,7 +172323,7 @@ MonoBehaviour:
   canUseOnlyOnce: 1
   comicText: 
   bossToActivate: {fileID: 0}
-  openText: E -Open Door
+  openText: E - Open with Rusty Key
   lockedText: Find Rusty Key
 --- !u!1 &1059192713
 GameObject:

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f896120182dd854896c2ab7adbc9c27, type: 3}
   m_Name: SpeedUP
   m_EditorClassIdentifier: 
-  UpgradeName: Zwinne nogi
+  UpgradeName: SpeedUp
   Descriptions:
-  - Biegaj szybciej o 5%
-  - Biegaj szybciej o 10%
-  - Biegaj szybciej o 20%
+  - +5% Movement speed
+  - +10% Movement speed
+  - +20% Movement speed
   Costs: 010000000100000002000000
   Values:
   - 0.05

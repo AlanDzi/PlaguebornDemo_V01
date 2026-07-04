@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f896120182dd854896c2ab7adbc9c27, type: 3}
   m_Name: RangeUP
   m_EditorClassIdentifier: 
-  UpgradeName: "Sir D\u0142ugor\u0119ki"
+  UpgradeName: RangeUP
   Descriptions:
-  - "Zwi\u0119ksz zasi\u0119g ataku o 0.5 "
-  - "Zwi\u0119ksz zasi\u0119g ataku o 0.5 "
-  - "Zwi\u0119ksz zasi\u0119g ataku o 1"
+  - +0.5 Attack range
+  - +0.5 Attack range
+  - +1 Attack range
   Costs: 010000000100000003000000
   Values:
   - 0.5

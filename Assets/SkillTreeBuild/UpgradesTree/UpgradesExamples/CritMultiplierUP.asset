@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f896120182dd854896c2ab7adbc9c27, type: 3}
   m_Name: CritMultiplierUP
   m_EditorClassIdentifier: 
-  UpgradeName: "JESZCE WI\u0118CEJ MOCY"
+  UpgradeName: Crititacal hit multiplier
   Descriptions:
-  - "Wi\u0119kszy mno\u017Cnik krytycznego uderzenia"
+  - Deal more damage from critical hit
   Costs: 05000000
   Values:
   - 2
